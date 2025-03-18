@@ -1,25 +1,25 @@
-import gradio as gr
 from transformers import pipeline
+import gradio as gr
 
-# Initialize the zero-shot classification pipeline
+# Load the model and create a pipeline for zero-shot classification
 classifier = pipeline("zero-shot-classification", model="facebook/bart-base")
 
-# Define the classification function
-def classify_text(text, labels):
-    labels = labels.split(",")  # Convert the comma-separated string into a list
-    result = classifier(text, candidate_labels=labels)
-    return result
+# Load labels from a txt file
+with open("labels.txt", "r", encoding="utf-8") as f:
+    class_labels = [line.strip() for line in f if line.strip()]
 
-# Set up the Gradio interface
-with gr.Blocks() as demo:
-    gr.Markdown("# Zero-Shot Classification")
-    text_input = gr.Textbox(label="Input Text")
-    label_input = gr.Textbox(label="Comma-separated Labels")
-    output = gr.JSON(label="Result")
-    classify_button = gr.Button("Classify")
+# Define the Gradio interface
+def classify(text):
+    return classifier(text, class_labels)
 
-    # Link the button to the classification function
-    classify_button.click(classify_text, inputs=[text_input, label_input], outputs=output)
+demo = gr.Interface(
+    fn=classify,
+    inputs="text",
+    outputs="json",
+    title="Zero-Shot Classification",
+    description="Enter a text describing your trip",
+)
 
-# Launch the Gradio interface
-demo.launch()
+# Launch the Gradio app
+if __name__ == "__main__":
+    demo.launch()
