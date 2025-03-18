@@ -22,4 +22,4 @@ jobs:
           git config --global user.name "your-username"
           git add .
           git commit -m "Auto-update from GitHub"
-          git push https://your-huggingface-username:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/your-username/your-space-name main
+          git push https://your-huggingface-username:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/your-username/your-space-name master
