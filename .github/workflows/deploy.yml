@@ -3,7 +3,7 @@ name: Deploy to Hugging Face Spaces
 on:
   push:
     branches:
-      - master  # Change this if you use another branch
+      - main  # Make sure your GitHub branch is "main"
 
 jobs:
   deploy:
@@ -14,12 +14,19 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Push to Hugging Face Spaces
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}  # Use the secret correctly
         run: |
-          git clone https://huggingface.co/spaces/your-username/your-space-name space
-          rsync -av --exclude=".git" ./ space/
+          git clone 
+https://huggingface.co/spaces/your-username/your-space-name space
+          rsync -av --exclude=".git" --exclude=".github" ./ space/
           cd space
           git config --global user.email "your-email@example.com"
           git config --global user.name "your-username"
           git add .
-          git commit -m "Auto-update from GitHub"
-          git push https://your-huggingface-username:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/your-username/your-space-name master
+          git commit -m "Auto-update from GitHub" || echo "No changes to 
+commit"
+          git push 
+https://user:${HF_TOKEN}@huggingface.co/spaces/your-username/your-space-name 
+main
+
