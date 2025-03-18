@@ -17,11 +17,11 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}  # Use the secret correctly
         run: |
-          git clone https://huggingface.co/spaces/your-username/your-space-name space
+          git clone https://huggingface.co/spaces/AnjaJ/packing_list space
           rsync -av --exclude=".git" --exclude=".github" ./ space/
           cd space
-          git config --global user.email "your-email@example.com"
-          git config --global user.name "your-username"
+          git config --global user.email "anjaruetenbudde@icloud.com"
+          git config --global user.name "AnjaJuana"
           git add .
           git commit -m "Auto-update from GitHub" || echo "No changes to commit"
-          git push https://user:${HF_TOKEN}@huggingface.co/spaces/your-username/your-space-name main
+          git push https://user:${HF_TOKEN}@huggingface.co/spaces/AnjaJ/packing_list main
