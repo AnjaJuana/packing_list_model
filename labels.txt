@@ -1,89 +1,93 @@
-Swimsuit
-Sunscreen
-Flip-flops
-Beach towel
-Sunglasses
-Waterproof phone case
-Hat
-Beach bag
-Snorkel gear
-Aloe vera gel
-Tent
-Sleeping bag
-Camping stove
-Flashlight
-Hiking boots
-Water filter
-Compass
-First aid kit
-Bug spray
-Multi-tool
-Thermal clothing
-Ski jacket
-Ski goggles
-Snow boots
-Gloves
-Hand warmers
-Beanie
-Lip balm
-Snowboard
-Base layers
-Passport
-Visa documents
-Travel adapter
-Currency
-Language phrasebook
-SIM card
-Travel pillow
-Neck wallet
-Travel insurance documents
-Power bank
-Laptop
-Notebook
-Business attire
-Dress shoes
-Charging cables
-Presentation materials
-Work ID badge
-Pen
-Headphones
-Lightweight backpack
-Travel-sized toiletries
-Packable rain jacket
-Reusable water bottle
-Dry bag
-Trekking poles
-Hostel lock
-Quick-dry towel
-Travel journal
-Energy bars
-Car charger
-Snacks
-Map
-Sunglasses
-Cooler
-Blanket
-Emergency roadside kit
-Reusable coffee mug
-Playlist
-Reusable shopping bags
-Earplugs
-Fanny pack
-Portable charger
-Poncho
-Bandana
-Comfortable shoes
-Tent
-Refillable water bottle
-Glow sticks
-Festival tickets
-Diapers
-Baby wipes
-Baby food
-Stroller
-Pacifier
-Baby clothes
-Baby blanket
-Travel crib
-Toys
-Nursing cover
+sunscreen
+sunglasses
+sunhat
+flip-flops
+swimsuit
+beach towel
+waterproof phone case
+beach bag
+snorkel gear
+tent
+sleeping bag
+camping stove
+flashlight
+hiking boots
+water filter
+compass
+first aid kit
+bug spray
+multi-tool
+thermal clothing
+ski jacket
+ski goggles
+snow boots
+gloves
+hand warmers
+beanie
+lip balm
+snowboard
+base layers
+passport
+visa documents
+travel adapter
+currency
+sim card
+travel pillow
+neck wallet
+travel insurance documents
+power bank
+laptop
+business attire
+dress shoes
+charging cables
+pen
+headphones
+lightweight backpack
+travel-sized toiletries
+packable rain jacket
+dry bag
+trekking poles
+hostel lock
+quick-dry towel
+travel journal
+snacks
+blanket
+emergency roadside kit
+reusable coffee mug
+reusable shopping bags
+earplugs
+fanny pack
+poncho
+bandana
+comfortable shoes
+bathing suit
+sandals
+light jacket
+entertainment for downtime (e.g. book/ebook, games, laptop, journal)
+short pants/skirts
+t-shirts/tops
+thin scarf
+pants
+shirts
+cardigan/sweater
+gifts
+winter shoes
+long pants
+short pants
+malaria medication
+mosquito repellant
+local currency
+wallet
+tickets
+phone and charger
+painkiller
+necessary medication
+personal toiletries (e.g. toothbrush, toothpaste)
+underwear
+socks
+sleep wear
+snacks for the journey
+refillable water bottle
+day pack
+big backpack/suitcase
+
