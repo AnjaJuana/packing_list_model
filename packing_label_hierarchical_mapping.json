@@ -1,0 +1,290 @@
+{
+  "ski touring": {
+    "category": "activities",
+    "superclass": "winter sport"
+  },
+  "cross-country skiing": {
+    "category": "activities",
+    "superclass": "winter sport"
+  },
+  "skiing": {
+    "category": "activities",
+    "superclass": "winter sport"
+  },
+  "snowboard / splitboard trip": {
+    "category": "activity_type",
+    "superclass": "winter sport"
+  },
+  "snowshoe hiking": {
+    "category": "activities",
+    "superclass": "winter sport"
+  },
+  "ice climbing": {
+    "category": "activities",
+    "superclass": "winter sport"
+  },
+  "hiking": {
+    "category": "activities",
+    "superclass": "outdoor land"
+  },
+  "hut-to-hut hiking": {
+    "category": "activities",
+    "superclass": "outdoor land"
+  },
+  "huttentocht (zomer)": {
+    "category": "activity_type",
+    "superclass": "outdoor land"
+  },
+  "huttentocht (winter)": {
+    "category": "activity_type",
+    "superclass": "winter sport"
+  },
+  "rock climbing": {
+    "category": "activities",
+    "superclass": "outdoor land"
+  },
+  "biking": {
+    "category": "activities",
+    "superclass": "outdoor land"
+  },
+  "running": {
+    "category": "activities",
+    "superclass": "fitness"
+  },
+  "swimming": {
+    "category": "activities",
+    "superclass": "water sport"
+  },
+  "kayaking / canoeing": {
+    "category": "activities",
+    "superclass": "water sport"
+  },
+  "stand-up paddleboarding (SUP)": {
+    "category": "activities",
+    "superclass": "water sport"
+  },
+  "snorkeling": {
+    "category": "activities",
+    "superclass": "water sport"
+  },
+  "scuba diving": {
+    "category": "activities",
+    "superclass": "water sport"
+  },
+  "surfing": {
+    "category": "activities",
+    "superclass": "water sport"
+  },
+  "fishing": {
+    "category": "activities",
+    "superclass": "water sport"
+  },
+  "rafting": {
+    "category": "activities",
+    "superclass": "water sport"
+  },
+  "paragliding": {
+    "category": "activities",
+    "superclass": "adventure sport"
+  },
+  "horseback riding": {
+    "category": "activities",
+    "superclass": "outdoor land"
+  },
+  "photography": {
+    "category": "activities",
+    "superclass": "leisure"
+  },
+  "relaxing": {
+    "category": "activities",
+    "superclass": "leisure"
+  },
+  "sightseeing": {
+    "category": "activities",
+    "superclass": "cultural"
+  },
+  "yoga": {
+    "category": "activities",
+    "superclass": "wellness"
+  },
+  "festivaltrip": {
+    "category": "activity_type",
+    "superclass": "urban / event"
+  },
+  "stedentrip": {
+    "category": "activity_type",
+    "superclass": "urban / cultural"
+  },
+  "roadtrip (auto/camper)": {
+    "category": "activity_type",
+    "superclass": "travel mode"
+  },
+  "digitale nomade reis": {
+    "category": "activity_type",
+    "superclass": "remote work"
+  },
+  "kampeerreis (wildkamperen)": {
+    "category": "activity_type",
+    "superclass": "outdoor overnight"
+  },
+  "kampeerreis (camping)": {
+    "category": "activity_type",
+    "superclass": "outdoor overnight"
+  },
+  "langeafstandswandeling / thru-hike": {
+    "category": "activity_type",
+    "superclass": "backpacking"
+  },
+  "microavontuur / weekendtrip": {
+    "category": "activity_type",
+    "superclass": "short trip"
+  },
+  "yoga / wellness retreat": {
+    "category": "activity_type",
+    "superclass": "wellness"
+  },
+  "strandvakantie": {
+    "category": "activity_type",
+    "superclass": "beach / leisure"
+  },
+  "warme bestemming / zomer": {
+    "category": "climate_or_season",
+    "superclass": "warm"
+  },
+  "koude bestemming / winter": {
+    "category": "climate_or_season",
+    "superclass": "cold"
+  },
+  "wisselvallig / lente / herfst": {
+    "category": "climate_or_season",
+    "superclass": "mild"
+  },
+  "tropisch / vochtig": {
+    "category": "climate_or_season",
+    "superclass": "humid"
+  },
+  "droog / woestijnachtig": {
+    "category": "climate_or_season",
+    "superclass": "dry"
+  },
+  "ultralight": {
+    "category": "style_or_comfort",
+    "superclass": "packing style"
+  },
+  "lichtgewicht (maar comfortabel)": {
+    "category": "style_or_comfort",
+    "superclass": "packing style"
+  },
+  "luxe (inclusief avondkleding)": {
+    "category": "style_or_comfort",
+    "superclass": "comfort / luxury"
+  },
+  "casual": {
+    "category": "dress_code",
+    "superclass": "informal"
+  },
+  "formeel (zakelijke reis)": {
+    "category": "dress_code",
+    "superclass": "formal"
+  },
+  "conservative": {
+    "category": "dress_code",
+    "superclass": "cultural"
+  },
+  "minimalistisch": {
+    "category": "style_or_comfort",
+    "superclass": "packing style"
+  },
+  "off-grid / geen stroom": {
+    "category": "special_conditions",
+    "superclass": "independent"
+  },
+  "self-supported (eten/koken zelf meenemen)": {
+    "category": "special_conditions",
+    "superclass": "independent"
+  },
+  "regenachtig klimaat": {
+    "category": "special_conditions",
+    "superclass": "weather"
+  },
+  "sneeuw en ijs": {
+    "category": "special_conditions",
+    "superclass": "weather"
+  },
+  "hoog alpine terrein": {
+    "category": "special_conditions",
+    "superclass": "terrain"
+  },
+  "lawinegevoelig terrein": {
+    "category": "special_conditions",
+    "superclass": "terrain"
+  },
+  "hutten met halfpension": {
+    "category": "accommodation",
+    "superclass": "type"
+  },
+  "slapen in tent": {
+    "category": "accommodation",
+    "superclass": "type"
+  },
+  "slapen in auto": {
+    "category": "accommodation",
+    "superclass": "type"
+  },
+  "kindvriendelijk": {
+    "category": "special_conditions",
+    "superclass": "target group"
+  },
+  "huisdiervriendelijk": {
+    "category": "special_conditions",
+    "superclass": "target group"
+  },
+  "accommodation: outdoor": {
+    "category": "accommodation",
+    "superclass": "type"
+  },
+  "accommodation: indoor": {
+    "category": "accommodation",
+    "superclass": "type"
+  },
+  "transportation: vehicle": {
+    "category": "transportation",
+    "superclass": "mode"
+  },
+  "transportation: no vehicle": {
+    "category": "transportation",
+    "superclass": "mode"
+  },
+  "1 day": {
+    "category": "trip_length_days",
+    "superclass": "duration"
+  },
+  "2 days": {
+    "category": "trip_length_days",
+    "superclass": "duration"
+  },
+  "3 days": {
+    "category": "trip_length_days",
+    "superclass": "duration"
+  },
+  "4 days": {
+    "category": "trip_length_days",
+    "superclass": "duration"
+  },
+  "5 days": {
+    "category": "trip_length_days",
+    "superclass": "duration"
+  },
+  "6 days": {
+    "category": "trip_length_days",
+    "superclass": "duration"
+  },
+  "7 days": {
+    "category": "trip_length_days",
+    "superclass": "duration"
+  },
+  "7+ days": {
+    "category": "trip_length_days",
+    "superclass": "duration"
+  }
+}

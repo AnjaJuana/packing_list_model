@@ -1,0 +1,94 @@
+{
+  "activity_type": [
+    "huttentocht (zomer)",
+    "huttentocht (winter)",
+    "kampeerreis (wildkamperen)",
+    "kampeerreis (camping)",
+    "skitocht / skitour",
+    "snowboard / splitboard trip",
+    "langeafstandswandeling / thru-hike",
+    "digitale nomade reis",
+    "stedentrip",
+    "roadtrip (auto/camper)",
+    "festivaltrip",
+    "yoga / wellness retreat",
+    "microavontuur / weekendtrip",
+    "strandvakantie"
+  ],
+  "activities": [
+    "swimming",
+    "going to the beach",
+    "relaxing",
+    "sightseeing",
+    "biking",
+    "running",
+    "skiing",
+    "cross-country skiing",
+    "ski touring",
+    "hiking",
+    "hut-to-hut hiking",
+    "rock climbing",
+    "ice climbing",
+    "snowshoe hiking",
+    "kayaking / canoeing",
+    "stand-up paddleboarding (SUP)",
+    "snorkeling",
+    "scuba diving",
+    "surfing",
+    "paragliding",
+    "horseback riding",
+    "photography",
+    "fishing",
+    "rafting",
+    "yoga"
+  ],
+  "climate_or_season": [
+    "koude bestemming / winter",
+    "warme bestemming / zomer",
+    "wisselvallig / lente / herfst",
+    "tropisch / vochtig",
+    "droog / woestijnachtig"
+  ],
+  "style_or_comfort": [
+    "ultralight",
+    "lichtgewicht (maar comfortabel)",
+    "luxe (inclusief avondkleding)",
+    "minimalistisch"
+  ],
+  "dress_code": [
+    "casual",
+    "formeel (zakelijke reis)",
+    "conservative"
+  ],
+  "accommodation": [
+    "outdoor",
+    "indoor",
+    "hutten met halfpension",
+    "slapen in tent",
+    "slapen in auto"
+  ],
+  "transportation": [
+    "vehicle",
+    "no vehicle"
+  ],
+  "special_conditions": [
+    "off-grid / geen stroom",
+    "self-supported (eten/koken zelf meenemen)",
+    "kindvriendelijk",
+    "huisdiervriendelijk",
+    "regenachtig klimaat",
+    "sneeuw en ijs",
+    "hoog alpine terrein",
+    "lawinegevoelig terrein"
+  ],
+  "trip_length_days": [
+    "1 day",
+    "2 days",
+    "3 days",
+    "4 days",
+    "5 days",
+    "6 days",
+    "7 days",
+    "7+ days"
+  ]
+}
