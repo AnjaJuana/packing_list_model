@@ -1,19 +1,21 @@
 {
   "activity_type": [
-    "huttentocht (zomer)",
-    "huttentocht (winter)",
-    "kampeerreis (wildkamperen)",
-    "kampeerreis (camping)",
-    "skitocht / skitour",
+    "hut trek (summer)",
+    "hut trek (winter)",
+    "camping trip (wild camping)",
+    "camping trip (campground)",
+    "ski tour / skitour",
     "snowboard / splitboard trip",
-    "langeafstandswandeling / thru-hike",
-    "digitale nomade reis",
-    "stedentrip",
-    "roadtrip (auto/camper)",
-    "festivaltrip",
+    "long-distance hike / thru-hike",
+    "digital nomad trip",
+    "city trip",
+    "road trip (car/camper)",
+    "festival trip",
     "yoga / wellness retreat",
-    "microavontuur / weekendtrip",
-    "strandvakantie"
+    "micro-adventure / weekend trip",
+    "beach vacation",
+    "cultural exploration",
+    "nature escape"
   ],
   "activities": [
     "swimming",
@@ -43,43 +45,43 @@
     "yoga"
   ],
   "climate_or_season": [
-    "koude bestemming / winter",
-    "warme bestemming / zomer",
-    "wisselvallig / lente / herfst",
-    "tropisch / vochtig",
-    "droog / woestijnachtig"
+    "cold destination / winter",
+    "warm destination / summer",
+    "variable weather / spring / autumn",
+    "tropical / humid",
+    "dry / desert-like"
   ],
   "style_or_comfort": [
     "ultralight",
-    "lichtgewicht (maar comfortabel)",
-    "luxe (inclusief avondkleding)",
-    "minimalistisch"
+    "lightweight (but comfortable)",
+    "luxury (including evening wear)",
+    "minimalist"
   ],
   "dress_code": [
     "casual",
-    "formeel (zakelijke reis)",
+    "formal (business trip)",
     "conservative"
   ],
   "accommodation": [
-    "outdoor",
     "indoor",
-    "hutten met halfpension",
-    "slapen in tent",
-    "slapen in auto"
+    "huts with half board",
+    "sleeping in a tent",
+    "sleeping in a car"
   ],
   "transportation": [
     "vehicle",
     "no vehicle"
   ],
   "special_conditions": [
-    "off-grid / geen stroom",
-    "self-supported (eten/koken zelf meenemen)",
-    "kindvriendelijk",
-    "huisdiervriendelijk",
-    "regenachtig klimaat",
-    "sneeuw en ijs",
-    "hoog alpine terrein",
-    "lawinegevoelig terrein"
+    "off-grid / no electricity",
+    "self-supported (bring your own food/cooking)",
+    "child-friendly",
+    "pet-friendly",
+    "rainy climate",
+    "snow and ice",
+    "high alpine terrain",
+    "avalanche-prone terrain",
+    "no special conditions"  
   ],
   "trip_length_days": [
     "1 day",

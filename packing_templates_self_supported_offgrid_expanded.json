@@ -1,5 +1,5 @@
 {
-  "huttentocht (zomer)": [
+  "hut trek (summer)": [
     "lichtgewicht trekkingrugzak (30\u201345 liter)",
     "waterzak of drinkflessen",
     "sneldrogende kleding",
@@ -11,7 +11,7 @@
     "lakenzak",
     "oordoppen"
   ],
-  "huttentocht (winter)": [
+  "hut trek (winter)": [
     "slaapzak (lichte, warme variant)",
     "lakenzak",
     "binnenkleding voor hut (thermo / fleece)",
@@ -20,7 +20,7 @@
     "snacks voor onderweg",
     "contant geld voor hutbetalingen"
   ],
-  "kampeerreis (wildkamperen)": [
+  "camping trip (wild camping)": [
     "tent of tarp",
     "slaapmat",
     "slaapzak",
@@ -32,7 +32,7 @@
     "aansteker",
     "toilettas met biologisch afbreekbare zeep"
   ],
-  "kampeerreis (camping)": [
+  "camping trip (campground)": [
     "tent",
     "kussen",
     "stoeltje",
@@ -77,7 +77,7 @@
     "sonde en schep",
     "lichte handschoenen voor het stijgen"
   ],
-  "langeafstandswandeling / thru-hike": [
+  "long-distance hike / thru-hike": [
     "lichtgewicht rugzak",
     "waterfilter",
     "voedselvoorraad",
@@ -89,7 +89,7 @@
     "natte doekjes",
     "sneldrogende handdoek"
   ],
-  "digitale nomade reis": [
+  "digital nomad trip": [
     "laptop en oplader",
     "wereldstekker",
     "noise-cancelling koptelefoon",
@@ -100,7 +100,7 @@
     "comfortabele rugzak of trolley",
     "mifi-router of portable wifi-hotspot"
   ],
-  "stedentrip": [
+  "city trip": [
     "dagrugzak",
     "oplader voor telefoon",
     "stadsplattegrond / offline maps",
@@ -110,7 +110,7 @@
     "reisgids of highlightslijst",
     "lichte jas of regenjas"
   ],
-  "roadtrip (auto/camper)": [
+  "road trip (car/camper)": [
     "autopapieren",
     "EHBO-kit",
     "snacks en drinken",
@@ -143,7 +143,7 @@
     "etherische olie (optioneel)",
     "boek / meditatiemateriaal"
   ],
-  "microavontuur / weekendtrip": [
+  "micro-adventure / weekend trip": [
     "dagrugzak",
     "snacks en drinken",
     "regenjas",
@@ -153,7 +153,7 @@
     "hoofddeksel",
     "compacte slaapuitrusting (indien overnachting)"
   ],
-  "strandvakantie": [
+  "beach vacation": [
     "zwemkleding",
     "strandlaken",
     "zonnebrandcr\u00e8me",
@@ -164,6 +164,24 @@
     "waterfles",
     "strandtas",
     "boek of e-reader"
+  ],
+  "cultural exploration": [
+    "dagrugzak",
+    "oplader voor telefoon",
+    "stadsplattegrond / offline maps",
+    "betaalkaart / contant geld",
+    "comfortabele schoenen",
+    "waterfles",
+    "reisgids of highlightslijst",
+    "lichte jas of regenjas"
+  ],
+  "nature escape": [
+    "dagrugzak",
+    "oplader voor telefoon",
+    "betaalkaart / contant geld",
+    "comfortabele schoenen",
+    "waterfles",
+    "downtime entertainment (e.g. book/ebook, games, laptop, journal)"
   ],
   "swimming": [
     "badkleding",
@@ -350,34 +368,34 @@
     "algemene items voor deze situatie",
     "extra kleding of uitrusting indien nodig"
   ],
-  "koude bestemming / winter": [
+  "cold destination / winter": [
     "thermokleding",
     "muts en handschoenen",
     "warme jas",
     "waterdichte schoenen",
     "lippenbalsem"
   ],
-  "warme bestemming / zomer": [
+  "warm destination / summer": [
     "luchtige kleding",
     "zonnebril",
     "zonnecr\u00e8me",
     "waterfles",
     "hoed of pet"
   ],
-  "wisselvallig / lente / herfst": [
+  "variable weather / spring / autumn": [
     "regenjas",
     "laagjeskleding",
     "warme trui",
     "waterdichte schoenen"
   ],
-  "tropisch / vochtig": [
+  "tropical / humid": [
     "lichtgewicht kleding",
     "insectenspray",
     "zonnecr\u00e8me",
     "regenponcho",
     "sneldrogende handdoek"
   ],
-  "droog / woestijnachtig": [
+  "dry / desert-like": [
     "zonnebril",
     "zonnecr\u00e8me",
     "hoofdbescherming",
@@ -395,21 +413,21 @@
     "sneldrogende handdoek",
     "tandenborstel (afgezaagd ;))"
   ],
-  "lichtgewicht (maar comfortabel)": [
+  "lightweight (but comfortable)": [
     "lichte tent of tarp",
     "comfortabele slaapmat",
     "lichtgewicht kookset",
     "compact kledingpakket",
     "sneldrogende handdoek"
   ],
-  "luxe (inclusief avondkleding)": [
+  "luxury (including evening wear)": [
     "nette schoenen",
     "jurk of overhemd",
     "parfum/deodorant",
     "accessoires",
     "reistoilettas met essentials"
   ],
-  "minimalistisch": [
+  "minimalist": [
     "1 set kleding voor elke situatie",
     "compacte tandenborstel",
     "alles-in-\u00e9\u00e9n zeep",
@@ -423,7 +441,7 @@
     "sneakers",
     "zonnebril"
   ],
-  "formeel (zakelijke reis)": [
+  "formal (business trip)": [
     "overhemd / blouse",
     "net jasje",
     "nette schoenen",
@@ -450,7 +468,7 @@
     "oplader",
     "toilettas"
   ],
-  "hutten met halfpension": [
+  "huts with half board": [
     "reserveringsbevestiging",
     "lakenzak (vaak verplicht)",
     "pantoffels of slippers voor binnen",
@@ -463,7 +481,7 @@
     "lichte handdoek",
     "zaklamp of hoofdlamp"
   ],
-  "slapen in tent": [
+  "sleeping in a tent": [
     "tent (1- of 2-persoons, afhankelijk van reis)",
     "grondzeil",
     "slaapmat",
@@ -478,7 +496,7 @@
     "boek of e-reader",
     "EHBO-set"
   ],
-  "slapen in auto": [
+  "sleeping in a car": [
     "slaapmat die past in auto",
     "warme slaapzak",
     "zonneschermen of verduistering",
@@ -502,7 +520,7 @@
     "lichte schoenen",
     "openbaar vervoer app of ticket"
   ],
-  "off-grid / geen stroom": [
+  "off-grid / no electricity": [
     "powerbank (minstens 10.000 mAh)",
     "zonnepaneel of draagbaar laadsysteem",
     "hoofdlamp + extra batterijen",
@@ -517,7 +535,7 @@
     "USB-hub (voor meerdere devices)",
     "verpakking om elektronica droog te houden"
   ],
-  "self-supported (eten/koken zelf meenemen)": [
+  "self-supported (bring your own food/cooking)": [
     "lichtgewicht kooktoestel (gas, benzine of alcohol)",
     "brandstof (voldoende voor aantal dagen)",
     "pan of keteltje",
@@ -534,7 +552,7 @@
     "minstens 2 liter wateropslag per persoon",
     "food bag of hangzak voor voedsel (wild-safe)"
   ],
-  "kindvriendelijk": [
+  "child-friendly": [
     "snacks en speelgoed",
     "EHBO-set met pleisters",
     "extra kleding",
@@ -561,34 +579,34 @@
     "regenhoes voor kinderwagen of draagzak",
     "hydraterende cr\u00e8me (voor gevoelige huid)"
   ],
-  "huisdiervriendelijk": [
+  "pet-friendly": [
     "voer en waterbak",
     "hondenriem of tuigje",
     "poepzakjes",
     "reismatje of deken",
     "vaccinatieboekje"
   ],
-  "regenachtig klimaat": [
+  "rainy climate": [
     "regenjas of poncho",
     "waterdichte rugzakhoes",
     "sneldrogende kleding",
     "rubberen schoenen"
   ],
-  "sneeuw en ijs": [
+  "snow and ice": [
     "warme laarzen",
     "dikke handschoenen",
     "sneeuwbril",
     "thermokleding",
     "gripzolen / spikes"
   ],
-  "hoog alpine terrein": [
+  "high alpine terrain": [
     "wandelstokken",
     "kaart en kompas",
     "wind- en waterdichte jas",
     "extra voeding",
     "EHBO-kit"
   ],
-  "lawinegevoelig terrein": [
+  "avalanche-prone terrain": [
     "lawinepieper",
     "schep",
     "sonde",
@@ -597,6 +615,8 @@
     "kaart en kompas / GPS",
     "partner check voor vertrek"
   ],
+  "no special conditions": [
+  ]
   "1 day": [
     "ondergoed per dag",
     "sokken per dag",
