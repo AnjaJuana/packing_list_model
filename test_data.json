@@ -13,7 +13,7 @@
     },
     {
         "description": "We are a couple in our thirties traveling to Vienna for a three-day city trip. We’ll be staying at a friend’s house and plan to explore the city by sightseeing, strolling through the streets, visiting markets, and trying out great restaurants and cafés. We also hope to attend a classical music concert. Our journey to Vienna will be by train.",
-        "trip_types": ["city trip", "sightseeing", "variable weather / spring / autumn", 
+        "trip_types": ["city trip", ["sightseeing"], "variable weather / spring / autumn", 
                        "luxury (including evening wear)", "casual", "indoor", "no vehicle", 
                        "no special condition", "3 days"],
         "packing_list": [
@@ -23,7 +23,7 @@
     },
     {
         "description": "My partner and I are traveling to the Netherlands and Germany to spend Christmas with our family. We are in our late twenties and will start our journey with a two-hour flight to the Netherlands. From there, we will take a 5.5-hour train ride to northern Germany.",
-        "trip_types": ["city trip", "relaxing", "cold destination / winter", "lightweight (but comfortable)", 
+        "trip_types": ["city trip", ["relaxing"], "cold destination / winter", "lightweight (but comfortable)", 
                        "casual", "indoor", "no vehicle", "no special condition", "7+ days"],
         "packing_list": [
             "light rain jacket", "midlayer insulated jacket", "scarf", "hat", "winter shoes",
@@ -33,7 +33,7 @@
     },
     {
         "description": "I’m in my twenties and will be traveling to Peru for three weeks. I’m going solo but will meet up with a friend to explore the Sacred Valley and take part in a Machu Picchu tour. We plan to hike, go rafting, and explore the remnants of the ancient Inca Empire. We’re also excited to try Peruvian cuisine and immerse ourselves in the local culture. Depending on our plans, we might also visit the rainforest region, such as Tarapoto. I’ll be flying to Peru on a long-haul flight and will be traveling in August.",
-        "trip_types": ["cultural exploration", "sightseeing", "hiking", "rafting", "variable weather / spring / autumn", 
+        "trip_types": ["cultural exploration", ["sightseeing", "hiking", "rafting"], "variable weather / spring / autumn", 
                        "lightweight (but comfortable)", "casual", "indoor", "no vehicle", "rainy climate", "7+ days"],
         "packing_list": [
             "light rain jacket", "2 midlayer insulated jackets", "hiking shoes", "comfortable walking shoes",
@@ -44,7 +44,7 @@
     },
     {
         "description": "We’re planning a 10-day trip to Austria in the summer, combining hiking with relaxation by the lake. We love exploring scenic trails and enjoying the outdoors, but we also want to unwind and swim in the lake. It’s the perfect mix of adventure and relaxation.",
-        "trip_types": ["nature escape", "swimming", "relaxing", "hiking", "warm destination / summer", 
+        "trip_types": ["nature escape", ["swimming", "relaxing", "hiking"], "warm destination / summer", 
                        "lightweight (but comfortable)", "casual", "indoor", "no vehicle", "no special conditions", "7+ days"],
         "packing_list": [
             "swimming suit", "travel towel", "sunprotection: sunscreen", "sunhat", "sunglasses",
