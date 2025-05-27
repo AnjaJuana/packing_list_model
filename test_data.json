@@ -51,5 +51,80 @@
             "downtime entertainment (e.g. book/ebook, games, laptop, journal)",
             "7 shirts", "3 pants", "light rain jacket", "light jacket", "hiking shoes", "comfortable walking shoes"
         ]
+    },
+    {
+        "description": "I am going on a multiple day hike and passing though mountains and the beach in Croatia. I like to pack light and will stay in refugios/huts with half board and travel to the start of the hike by car. It will be 6-7 days.",
+        "trip_types": [
+            "long-distance hike / thru-hike",
+            ["going to the beach"],
+            "tropical / humid",
+            "minimalist",
+            "casual",
+            "huts with half board",
+            "vehicle",
+            "off-grid / no electricity",
+            "6 days"
+        ],
+        "packing_list": ["lichtgewicht rugzak", "waterfilter", "voedselvoorraad", "navigatie (kaart/kompas/GPS)", "zonnebril"]
+    },
+    {
+        "description": "I will go with a friend on a beach holiday and we will do stand-up paddling, and surfing in the North of Spain. The destination is windy and can get cold, but is generally sunny. We will go by car and bring a tent to sleep in. It will be two weeks.",
+        "trip_types": [
+            "beach vacation",
+            ["stand-up paddleboarding (SUP)", "surfing"],
+            "cold destination / winter",
+            "ultralight",
+            "casual",
+            "sleeping in a tent",
+            "vehicle",
+            "off-grid / no electricity",
+            "6 days"
+        ],
+        "packing_list": ["zwemkleding", "wetsuit", "tent", "strandlaken", "zonnebrandcrème", "zonnebril", "hoed of pet"]
+    },
+    {
+        "description": "We will go to Sweden in the winter, to go for a yoga and sauna/wellness retreat. I prefer lightweight packing and also want clothes to go for fancy dinners and maybe on a winter hike. We stay in hotels.",
+        "trip_types": [
+            "yoga / wellness retreat",
+            ["hut-to-hut hiking", "yoga"],
+            "cold destination / winter",
+            "lightweight (but comfortable)",
+            "formal (business trip)",
+            "sleeping in a tent",
+            "no vehicle",
+            "avalanche-prone terrain",
+            "7 days"
+        ],
+        "packing_list": ["yogamat of yogahanddoek", "comfortabele kleding", "dagboek / pen", "waterfles", "zonnebril"]
+    },
+    {
+        "description": "I go on a skitouring trip where we also make videos/photos and the destination is Japan. Mainly sports clothes and isolation are needed (it is winter). We stay in a guesthouse. It will be 10 days.",
+        "trip_types": [
+            "ski tour / skitour",
+            ["ski touring", "photography", "swimming"],
+            "cold destination / winter",
+            "minimalist",
+            "conservative",
+            "indoor",
+            "no vehicle",
+            "avalanche-prone terrain",
+            "5 days"
+        ],
+        "packing_list": ["gore-tex kleding", "comfortabele kleding", "lawinepieper", "waterfles", "zonnebril"]
+    },
+    {
+        "description": "We plan a wild camping trip with activities such as snorkeling, kayaking and canoeing. It is a warm place and we want to bring little stuff. We stay in tents and hammocks and travel with a car, it will be 3 days.",
+        "trip_types": [
+            "camping trip (wild camping)",
+            ["scuba diving", "kayaking / canoeing"],
+            "tropical / humid",
+            "lightweight (but comfortable)",
+            "conservative",
+            "sleeping in a tent",
+            "vehicle",
+            "no special conditions",
+            "3 days"
+        ],
+        "packing_list": ["tent of tarp", "slaapmat", "slaapzak", "hoofdlamp", "waterfilter"]
     }
 ]
