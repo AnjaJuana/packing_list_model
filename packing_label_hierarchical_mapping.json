@@ -247,11 +247,11 @@
     "category": "accommodation",
     "superclass": "type"
   },
-  "transportation: vehicle": {
+  "transportation: own vehicle": {
     "category": "transportation",
     "superclass": "mode"
   },
-  "transportation: no vehicle": {
+  "transportation: no own vehicle": {
     "category": "transportation",
     "superclass": "mode"
   },

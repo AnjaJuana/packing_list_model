@@ -507,14 +507,14 @@
     "snacks voor de nacht",
     "thermische deken (voor koude nachten)"
   ],
-  "vehicle": [
+  "own vehicle": [
     "rijbewijs",
     "autopapieren",
     "EHBO-set",
     "navigatie of smartphone",
     "telefoonhouder"
   ],
-  "no vehicle": [
+  "no own vehicle": [
     "rugzak",
     "waterfles",
     "lichte schoenen",

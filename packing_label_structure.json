@@ -69,8 +69,8 @@
     "sleeping in a car"
   ],
   "transportation": [
-    "vehicle",
-    "no vehicle"
+    "own vehicle",
+    "no own vehicle"
   ],
   "special_conditions": [
     "off-grid / no electricity",
