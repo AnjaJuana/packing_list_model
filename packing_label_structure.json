@@ -49,7 +49,8 @@
     "warm destination / summer",
     "variable weather / spring / autumn",
     "tropical / humid",
-    "dry / desert-like"
+    "dry / desert-like",
+    "rainy climate"
   ],
   "style_or_comfort": [
     "ultralight",
@@ -74,13 +75,12 @@
   ],
   "special_conditions": [
     "off-grid / no electricity",
-    "self-supported (bring your own food/cooking)",
-    "child-friendly",
+    "self-supported (bring your own cooking gear)",
+    "travel with children",
     "pet-friendly",
-    "rainy climate",
     "snow and ice",
     "high alpine terrain",
-    "avalanche-prone terrain",
+    "snow, ice and avalanche-prone terrain",
     "no special conditions to consider"  
   ],
   "trip_length_days": [

@@ -535,7 +535,7 @@
     "USB-hub (voor meerdere devices)",
     "verpakking om elektronica droog te houden"
   ],
-  "self-supported (bring your own food/cooking)": [
+  "self-supported (bring your own cooking gear)": [
     "lichtgewicht kooktoestel (gas, benzine of alcohol)",
     "brandstof (voldoende voor aantal dagen)",
     "pan of keteltje",
@@ -552,7 +552,7 @@
     "minstens 2 liter wateropslag per persoon",
     "food bag of hangzak voor voedsel (wild-safe)"
   ],
-  "child-friendly": [
+  "travel with children": [
     "snacks en speelgoed",
     "EHBO-set met pleisters",
     "extra kleding",
@@ -606,7 +606,7 @@
     "extra voeding",
     "EHBO-kit"
   ],
-  "avalanche-prone terrain": [
+  "snow, ice and avalanche-prone terrain": [
     "lawinepieper",
     "schep",
     "sonde",
