@@ -86,13 +86,13 @@
         "description": "We will go to Sweden in the winter, to go for a yoga and sauna/wellness retreat. I prefer lightweight packing and also want clothes to go for fancy dinners and maybe on a winter hike. We stay in hotels.",
         "trip_types": [
             "yoga / wellness retreat",
-            ["hut-to-hut hiking", "yoga"],
+            ["hiking", "yoga"],
             "cold destination / winter",
             "lightweight (but comfortable)",
-            "formal (business trip)",
-            "sleeping in a tent",
+            "casual",
+            "indoor",
             "no own vehicle",
-            "avalanche-prone terrain",
+            "snow and ice",
             "7 days"
         ],
         "packing_list": ["yogamat of yogahanddoek", "comfortabele kleding", "dagboek / pen", "waterfles", "zonnebril"]

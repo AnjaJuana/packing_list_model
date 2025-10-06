@@ -1,22 +1,45 @@
+# Prerequisites
 from transformers import pipeline
+import json
+import pandas as pd
 import gradio as gr
 
-# Load the model and create a pipeline for zero-shot classification
-classifier = pipeline("zero-shot-classification", model="facebook/bart-base")
+# get candidate labels
+with open("packing_label_structure.json", "r") as file:
+    candidate_labels = json.load(file)
+keys_list = list(candidate_labels.keys())
 
-# Load labels from a txt file
-with open("labels.txt", "r", encoding="utf-8") as f:
-    class_labels = [line.strip() for line in f if line.strip()]
+# Load test data (in list of dictionaries)
+with open("test_data.json", "r") as file:
+    packing_data = json.load(file)
 
-# Define the Gradio interface
-def classify(text):
-    return classifier(text, class_labels)
+# function and gradio app
+cut_off = 0.5  # used to choose which activities are relevant
+
+def classify(model_name, trip_descr, cut_off):
+    classifier = pipeline("zero-shot-classification", model=model_name)
+    # Create an empty DataFrame with specified columns
+    df = pd.DataFrame(columns=['superclass', 'pred_class'])
+    for i, key in enumerate(keys_list):
+        if key == 'activities':
+            result = classifier(trip_descr, candidate_labels[key], multi_label=True)
+            indices = [i for i, score in enumerate(result['scores']) if score > cut_off]
+            classes = [result['labels'][i] for i in indices]
+        else:
+            result = classifier(trip_descr, candidate_labels[key])
+            classes = result["labels"][0]
+        df.loc[i] = [key, classes]
+    return df
 
 demo = gr.Interface(
     fn=classify,
-    inputs="text",
-    outputs="json",
-    title="Zero-Shot Classification",
+    inputs=[
+        gr.Textbox(label="Model name", value = "facebook/bart-large-mnli"),
+        gr.Textbox(label="Trip description"),
+        gr.Number(label="Activity cut-off", value = 0.5),
+    ],
+    outputs="dataframe",
+    title="Trip classification",
     description="Enter a text describing your trip",
 )
 
