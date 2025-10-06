@@ -14,10 +14,13 @@ with open("test_data.json", "r") as file:
     packing_data = json.load(file)
 
 # function and gradio app
+model_name = "facebook/bart-large-mnli"
+classifier = pipeline("zero-shot-classification", model=model_name)
 cut_off = 0.5  # used to choose which activities are relevant
 
-def classify(model_name, trip_descr, cut_off):
-    classifier = pipeline("zero-shot-classification", model=model_name)
+def classify(#model_name, 
+             trip_descr, cut_off):
+    
     # Create an empty DataFrame with specified columns
     df = pd.DataFrame(columns=['superclass', 'pred_class'])
     for i, key in enumerate(keys_list):
@@ -34,7 +37,7 @@ def classify(model_name, trip_descr, cut_off):
 demo = gr.Interface(
     fn=classify,
     inputs=[
-        gr.Textbox(label="Model name", value = "facebook/bart-large-mnli"),
+        #gr.Textbox(label="Model name", value = "facebook/bart-large-mnli"),
         gr.Textbox(label="Trip description"),
         gr.Number(label="Activity cut-off", value = 0.5),
     ],
