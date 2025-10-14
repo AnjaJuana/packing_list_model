@@ -1,0 +1,696 @@
+{
+  "hut trek (summer)": [
+    "lichtgewicht trekkingrugzak (30\u201345 liter)",
+    "waterzak of drinkflessen",
+    "sneldrogende kleding",
+    "regenjas",
+    "snacks/energierepen",
+    "wandelschoenen",
+    "hoed of pet",
+    "zonnebrandcr\u00e8me",
+    "lakenzak",
+    "oordoppen"
+  ],
+  "hut trek (winter)": [
+    "slaapzak (lichte, warme variant)",
+    "lakenzak",
+    "binnenkleding voor hut (thermo / fleece)",
+    "hutpantoffels / Crocs",
+    "oordoppen",
+    "snacks voor onderweg",
+    "contant geld voor hutbetalingen"
+  ],
+  "camping trip (wild camping)": [
+    "tent of tarp",
+    "slaapmat",
+    "slaapzak",
+    "hoofdlamp",
+    "mes of multitool",
+    "waterfilter",
+    "kookset + brander",
+    "voedsel en snacks",
+    "aansteker",
+    "toilettas met biologisch afbreekbare zeep"
+  ],
+  "camping trip (campground)": [
+    "tent",
+    "kussen",
+    "stoeltje",
+    "kampeertafel (optioneel)",
+    "lamp of lantaarn",
+    "verlengsnoer (voor stroomcamping)",
+    "koelbox",
+    "servies & bestek",
+    "afwasspullen",
+    "boodschappen"
+  ],
+  "skitocht / skitour": [
+    "touringski's of splitboard",
+    "stijgvellen",
+    "lawinepieper (transceiver)",
+    "schep",
+    "sonde",
+    "gore-tex jas en broek",
+    "donsjas of warme isolatielaag",
+    "helm",
+    "handschoenen (2 paar)",
+    "ski- of zonnebril",
+    "thermosfles",
+    "sneldrogende baselayers",
+    "gamaschen (bij diepe sneeuw)",
+    "tourrugzak met ski-bevestiging",
+    "laagjes voor temperatuurregeling",
+    "energierepen of sportvoeding",
+    "GPS of offline kaarten",
+    "EHBO-set",
+    "lichte handschoenen voor het stijgen"
+  ],
+  "snowboard / splitboard trip": [
+    "splitboard of snowboard",
+    "lawinepieper",
+    "helm",
+    "dikke handschoenen",
+    "skibril",
+    "laagjes kleding",
+    "tourbindingen (voor splitboard)",
+    "stijgvellen",
+    "sonde en schep",
+    "lichte handschoenen voor het stijgen"
+  ],
+  "long-distance hike / thru-hike": [
+    "lichtgewicht rugzak",
+    "waterfilter",
+    "voedselvoorraad",
+    "navigatie (kaart/kompas/GPS)",
+    "first aid kit",
+    "trail runners of lichte wandelschoenen",
+    "zonbescherming",
+    "regenbescherming",
+    "natte doekjes",
+    "sneldrogende handdoek"
+  ],
+  "digital nomad trip": [
+    "laptop en oplader",
+    "wereldstekker",
+    "noise-cancelling koptelefoon",
+    "wifi-hotspot of lokale simkaart",
+    "powerbank",
+    "notitieboekje",
+    "lichte kleding",
+    "comfortabele rugzak of trolley",
+    "mifi-router of portable wifi-hotspot"
+  ],
+  "city trip": [
+    "dagrugzak",
+    "oplader voor telefoon",
+    "stadsplattegrond / offline maps",
+    "betaalkaart / contant geld",
+    "comfortabele schoenen",
+    "waterfles",
+    "reisgids of highlightslijst",
+    "lichte jas of regenjas"
+  ],
+  "road trip (car/camper)": [
+    "autopapieren",
+    "EHBO-kit",
+    "snacks en drinken",
+    "telefoonhouder / navigatie",
+    "kampeeruitrusting (indien overnachten)",
+    "reisgids of kaarten",
+    "zonnebril",
+    "stoel en tafel",
+    "vermaak (boek, muziek, spelletjes)"
+  ],
+  "festivaltrip": [
+    "tent",
+    "matje en slaapzak",
+    "oordoppen",
+    "poncho of regenjas",
+    "glitter / outfit",
+    "herbruikbare beker",
+    "zonnebrand",
+    "cash / pinpas",
+    "vriendenafspraken",
+    "snacks"
+  ],
+  "yoga / wellness retreat": [
+    "yogamat of yogahanddoek",
+    "comfortabele kleding",
+    "waterfles",
+    "dagboek / pen",
+    "warme trui of sjaal",
+    "sandalen",
+    "etherische olie (optioneel)",
+    "boek / meditatiemateriaal"
+  ],
+  "micro-adventure / weekend trip": [
+    "dagrugzak",
+    "snacks en drinken",
+    "regenjas",
+    "warme laag",
+    "kaart of GPS",
+    "toilettasje",
+    "hoofddeksel",
+    "compacte slaapuitrusting (indien overnachting)"
+  ],
+  "beach vacation": [
+    "zwemkleding",
+    "strandlaken",
+    "zonnebrandcr\u00e8me",
+    "zonnebril",
+    "hoed of pet",
+    "slippers",
+    "luchtige kleding",
+    "waterfles",
+    "strandtas",
+    "boek of e-reader"
+  ],
+  "cultural exploration": [
+    "dagrugzak",
+    "oplader voor telefoon",
+    "stadsplattegrond / offline maps",
+    "betaalkaart / contant geld",
+    "comfortabele schoenen",
+    "waterfles",
+    "reisgids of highlightslijst",
+    "lichte jas of regenjas"
+  ],
+  "nature escape": [
+    "dagrugzak",
+    "oplader voor telefoon",
+    "betaalkaart / contant geld",
+    "comfortabele schoenen",
+    "waterfles",
+    "downtime entertainment (e.g. book/ebook, games, laptop, journal)"
+  ],
+  "swimming": [
+    "badkleding",
+    "handdoek",
+    "zonnebrandcr\u00e8me",
+    "slippers",
+    "zwembril",
+    "waterfles"
+  ],
+  "going to the beach": [
+    "strandlaken",
+    "zwemkleding",
+    "zonnebrand",
+    "koeltas",
+    "strandstoel",
+    "zonnehoed"
+  ],
+  "relaxing": [
+    "comfortabele kleding",
+    "boek of e-reader",
+    "zitkussen of strandmat",
+    "muziek / koptelefoon"
+  ],
+  "sightseeing": [
+    "dagrugzak",
+    "waterfles",
+    "camera of smartphone",
+    "kaart of offline maps",
+    "zonnebril"
+  ],
+  "biking": [
+    "fiets of huurfiets",
+    "helm",
+    "sportkleding",
+    "fietslicht en slot",
+    "reparatieset"
+  ],
+  "running": [
+    "hardloopschoenen",
+    "sportkleding",
+    "zweetband of pet",
+    "waterfles of belt",
+    "sporthorloge (optioneel)"
+  ],
+  "skiing": [
+    "ski\u2019s en stokken",
+    "skischoenen",
+    "helm",
+    "skibril",
+    "skipas",
+    "dikke handschoenen",
+    "gore-tex kleding"
+  ],
+  "cross-country skiing": [
+    "langlaufski's en stokken",
+    "langlaufschoenen",
+    "ademende thermokleding",
+    "winddichte en waterafstotende buitenlaag",
+    "dunne handschoenen",
+    "muts of hoofdband",
+    "zonnebril of sportbril",
+    "buff of nekwarmer",
+    "lichte rugzak met water en snacks",
+    "EHBO-set"
+  ],
+  "ski touring": [
+    "algemene items voor deze situatie",
+    "extra kleding of uitrusting indien nodig"
+  ],
+  "hiking": [
+    "wandelschoenen of trailrunners",
+    "hiking sokken (anti-blaren)",
+    "hikingstokken",
+    "dagrugzak",
+    "regenjas of poncho",
+    "waterfles of waterzak",
+    "snacks / energierepen",
+    "zonnebrand en zonnebril",
+    "pet of hoed",
+    "blarenpleisters of tape",
+    "EHBO-set",
+    "navigatie (kaart, kompas of GPS)"
+  ],
+  "hut-to-hut hiking": [
+    "lichtgewicht trekkingrugzak (30\u201345 liter)",
+    "waterflessen of waterzak",
+    "snacks voor onderweg",
+    "regenjas",
+    "licht donsjack of warme laag",
+    "sneldrogende kleding",
+    "wandelschoenen",
+    "lakenzak",
+    "pantoffels of slippers voor hut",
+    "oordoppen",
+    "reserveringsbevestiging / contant geld voor hut"
+  ],
+  "rock climbing": [
+    "klimschoenen",
+    "klimgordel",
+    "zekeringsapparaat",
+    "chalk bag",
+    "helm"
+  ],
+  "ice climbing": [
+    "ijsbijlen",
+    "crampons",
+    "klimtouw",
+    "warme isolatielagen",
+    "klimgordel en helm"
+  ],
+  "snowshoe hiking": [
+    "algemene items voor deze situatie",
+    "extra kleding of uitrusting indien nodig"
+  ],
+  "kayaking / canoeing": [
+    "kayak of kano",
+    "peddel",
+    "reddingsvest",
+    "drybag",
+    "waterschoenen"
+  ],
+  "stand-up paddleboarding (SUP)": [
+    "SUP-board en peddel",
+    "reddingsvest",
+    "drybag",
+    "zonnebril met koord"
+  ],
+  "snorkeling": [
+    "snorkel en duikbril",
+    "zwemvliezen",
+    "badkleding",
+    "waterdichte tas"
+  ],
+  "scuba diving": [
+    "duikbril en snorkel",
+    "wetsuit",
+    "vinnen",
+    "duikcomputer",
+    "ademautomaat (indien eigen)"
+  ],
+  "surfing": [
+    "surfboard",
+    "wetsuit",
+    "wax",
+    "board leash",
+    "poncho of handdoek"
+  ],
+  "paragliding": [
+    "paraglider",
+    "helm",
+    "handschoenen",
+    "wandelschoenen",
+    "windjack"
+  ],
+  "horseback riding": [
+    "rijbroek",
+    "rijlaarzen of schoenen met hak",
+    "handschoenen",
+    "helm",
+    "eventueel eigen zadel of stijgbeugels"
+  ],
+  "photography": [
+    "camera + lenzen",
+    "statief",
+    "geheugenkaart(en)",
+    "extra accu's",
+    "lensdoekje"
+  ],
+  "fishing": [
+    "hengel",
+    "aas / kunstaas",
+    "visvergunning",
+    "laarzen of waadpak",
+    "koelbox (optioneel)"
+  ],
+  "rafting": [
+    "reddingsvest",
+    "waterdichte tas",
+    "waterschoenen",
+    "sneldrogende kleding",
+    "helm"
+  ],
+  "yoga": [
+    "algemene items voor deze situatie",
+    "extra kleding of uitrusting indien nodig"
+  ],
+  "cold destination / winter": [
+    "thermokleding",
+    "muts en handschoenen",
+    "warme jas",
+    "waterdichte schoenen",
+    "lippenbalsem"
+  ],
+  "warm destination / summer": [
+    "luchtige kleding",
+    "zonnebril",
+    "zonnecr\u00e8me",
+    "waterfles",
+    "hoed of pet"
+  ],
+  "variable weather / spring / autumn": [
+    "regenjas",
+    "laagjeskleding",
+    "warme trui",
+    "waterdichte schoenen"
+  ],
+  "tropical / humid": [
+    "lichtgewicht kleding",
+    "insectenspray",
+    "zonnecr\u00e8me",
+    "regenponcho",
+    "sneldrogende handdoek"
+  ],
+  "dry / desert-like": [
+    "zonnebril",
+    "zonnecr\u00e8me",
+    "hoofdbescherming",
+    "lichte lange mouwen",
+    "veel water"
+  ],
+  "ultralight": [
+    "lichtgewicht rugzak (< 1kg)",
+    "minimalistische shelter (tarp of tent)",
+    "lichtgewicht slaapmat",
+    "quilt of donsdeken",
+    "titanium kookset",
+    "beperkte kleding (laagjes!)",
+    "compacte regenjas",
+    "sneldrogende handdoek",
+    "tandenborstel (afgezaagd ;))"
+  ],
+  "lightweight (but comfortable)": [
+    "lichte tent of tarp",
+    "comfortabele slaapmat",
+    "lichtgewicht kookset",
+    "compact kledingpakket",
+    "sneldrogende handdoek"
+  ],
+  "luxury (including evening wear)": [
+    "nette schoenen",
+    "jurk of overhemd",
+    "parfum/deodorant",
+    "accessoires",
+    "reistoilettas met essentials"
+  ],
+  "minimalist": [
+    "1 set kleding voor elke situatie",
+    "compacte tandenborstel",
+    "alles-in-\u00e9\u00e9n zeep",
+    "lichtgewicht handdoek",
+    "kleine rugzak"
+  ],
+  "casual": [
+    "jeans of comfortabele broek",
+    "t-shirts",
+    "trui of hoodie",
+    "sneakers",
+    "zonnebril"
+  ],
+  "formal (business trip)": [
+    "overhemd / blouse",
+    "net jasje",
+    "nette schoenen",
+    "laptop en oplader",
+    "naamkaartjes / documenten"
+  ],
+  "conservative": [
+    "bedekkende kleding",
+    "sjaal of omslagdoek",
+    "lange broek of rok",
+    "gesloten schoenen"
+  ],
+  "outdoor": [
+    "regenjas",
+    "waterdichte schoenen",
+    "bivakzak of tarp",
+    "hoofdlamp",
+    "navigatie"
+  ],
+  "indoor": [
+    "pantoffels",
+    "comfortabele kleding",
+    "pyjama",
+    "oplader",
+    "toilettas"
+  ],
+  "huts with half board": [
+    "reserveringsbevestiging",
+    "lakenzak (vaak verplicht)",
+    "pantoffels of slippers voor binnen",
+    "lichte pyjama of slaapkleding",
+    "oorstopjes",
+    "waterfles",
+    "snacks voor onderweg",
+    "kleine toilettas",
+    "contant geld voor betalingen",
+    "lichte handdoek",
+    "zaklamp of hoofdlamp"
+  ],
+  "sleeping in a tent": [
+    "tent (1- of 2-persoons, afhankelijk van reis)",
+    "grondzeil",
+    "slaapmat",
+    "slaapzak (passend bij temperatuur)",
+    "hoofdlamp of zaklamp",
+    "sneldrogende handdoek",
+    "kussen of opblaasbaar hoofdkussen",
+    "oorstopjes",
+    "toilettas",
+    "powerbank",
+    "waterfles",
+    "boek of e-reader",
+    "EHBO-set"
+  ],
+  "sleeping in a car": [
+    "slaapmat die past in auto",
+    "warme slaapzak",
+    "zonneschermen of verduistering",
+    "kussen",
+    "waterfles binnen handbereik",
+    "powerbank of 12V-lader",
+    "toilettas",
+    "snacks voor de nacht",
+    "thermische deken (voor koude nachten)"
+  ],
+  "own vehicle": [
+    "rijbewijs",
+    "autopapieren",
+    "EHBO-set",
+    "navigatie of smartphone",
+    "telefoonhouder"
+  ],
+  "no own vehicle": [
+    "rugzak",
+    "waterfles",
+    "lichte schoenen",
+    "openbaar vervoer app of ticket"
+  ],
+  "off-grid / no electricity": [
+    "powerbank (minstens 10.000 mAh)",
+    "zonnepaneel of draagbaar laadsysteem",
+    "hoofdlamp + extra batterijen",
+    "oplaadbare batterijen en oplader",
+    "back-up verlichting (bijv. kleine zaklamp)",
+    "papieren kaart en kompas",
+    "notitieboekje + pen",
+    "noodcommunicatie (bijv. GPS beacon of satellietboodschapper)",
+    "opvouwbaar zonnepaneel (indien langere tochten)",
+    "navigatieapparaat met offline kaarten",
+    "extra opladerkabels",
+    "USB-hub (voor meerdere devices)",
+    "verpakking om elektronica droog te houden"
+  ],
+  "self-supported (bring your own cooking gear)": [
+    "lichtgewicht kooktoestel (gas, benzine of alcohol)",
+    "brandstof (voldoende voor aantal dagen)",
+    "pan of keteltje",
+    "spork of lepel",
+    "opvouwbaar snijplankje (optioneel)",
+    "aandrukbare kom of beker",
+    "aansteker + lucifers (waterdicht verpakt)",
+    "gedroogde of gevriesdroogde maaltijden",
+    "snacks / noodbars",
+    "afwasmiddel (biologisch afbreekbaar) + sponsje",
+    "opslagzakken voor afval",
+    "waterfilter of -pomp",
+    "chloordruppels of zuiveringstabletten",
+    "minstens 2 liter wateropslag per persoon",
+    "food bag of hangzak voor voedsel (wild-safe)"
+  ],
+  "travel with children": [
+    "snacks en speelgoed",
+    "EHBO-set met pleisters",
+    "extra kleding",
+    "kinderdrager of buggy",
+    "zonbescherming",
+    "extra snacks voor kinderen",
+    "favoriet speelgoed of knuffel",
+    "reisstoel of draagzak",
+    "natte doekjes",
+    "luiers of potje (afhankelijk van leeftijd)",
+    "extra set kleding per dag",
+    "reisapotheek voor kinderen",
+    "kinderzonnebrand",
+    "activiteitenboekje of tablet met filmpjes",
+    "snelle snacks voor onderweg",
+    "kinder slaapzak of slaapmat",
+    "reisbedje of matrasje (voor jonge kinderen)",
+    "luiers of oefenbroekjes",
+    "flesjes en voeding (indien van toepassing)",
+    "babyfoon (voor verblijf op locatie)",
+    "speen of fopspeen",
+    "kinder EHBO-set (inclusief thermometer)",
+    "zonnehoedje of muts",
+    "regenhoes voor kinderwagen of draagzak",
+    "hydraterende cr\u00e8me (voor gevoelige huid)"
+  ],
+  "pet-friendly": [
+    "voer en waterbak",
+    "hondenriem of tuigje",
+    "poepzakjes",
+    "reismatje of deken",
+    "vaccinatieboekje"
+  ],
+  "rainy climate": [
+    "regenjas of poncho",
+    "waterdichte rugzakhoes",
+    "sneldrogende kleding",
+    "rubberen schoenen"
+  ],
+  "snow and ice": [
+    "warme laarzen",
+    "dikke handschoenen",
+    "sneeuwbril",
+    "thermokleding",
+    "gripzolen / spikes"
+  ],
+  "high alpine terrain": [
+    "wandelstokken",
+    "kaart en kompas",
+    "wind- en waterdichte jas",
+    "extra voeding",
+    "EHBO-kit"
+  ],
+  "snow, ice and avalanche-prone terrain": [
+    "lawinepieper",
+    "schep",
+    "sonde",
+    "airbag rugzak (indien beschikbaar)",
+    "kennis van lawineveiligheid / cursus",
+    "kaart en kompas / GPS",
+    "partner check voor vertrek"
+  ],
+  "no special conditions": [
+  ],
+  "1 day": [
+    "ondergoed per dag",
+    "sokken per dag",
+    "toilettas",
+    "extra kledinglaag",
+    "aantal maaltijden/snacks afgestemd op duur"
+  ],
+  "2 days": [
+    "ondergoed per dag",
+    "sokken per dag",
+    "toilettas",
+    "extra kledinglaag",
+    "aantal maaltijden/snacks afgestemd op duur"
+  ],
+  "3 days": [
+    "ondergoed per dag",
+    "sokken per dag",
+    "toilettas",
+    "extra kledinglaag",
+    "aantal maaltijden/snacks afgestemd op duur"
+  ],
+  "4 days": [
+    "ondergoed per dag",
+    "sokken per dag",
+    "toilettas",
+    "extra kledinglaag",
+    "aantal maaltijden/snacks afgestemd op duur"
+  ],
+  "5 days": [
+    "ondergoed per dag",
+    "sokken per dag",
+    "toilettas",
+    "extra kledinglaag",
+    "aantal maaltijden/snacks afgestemd op duur"
+  ],
+  "6 days": [
+    "ondergoed per dag",
+    "sokken per dag",
+    "toilettas",
+    "extra kledinglaag",
+    "aantal maaltijden/snacks afgestemd op duur"
+  ],
+  "7 days": [
+    "ondergoed per dag",
+    "sokken per dag",
+    "toilettas",
+    "extra kledinglaag",
+    "aantal maaltijden/snacks afgestemd op duur"
+  ],
+  "7+ days": [
+    "ondergoed per dag",
+    "sokken per dag",
+    "toilettas",
+    "extra kledinglaag",
+    "aantal maaltijden/snacks afgestemd op duur"
+  ],
+  "default_items": [
+    "telefoon + oplader",
+    "powerbank",
+    "identiteitsbewijs of paspoort",
+    "betaalmiddelen (pinpas / contant geld)",
+    "verzekeringspas / reisverzekering-info",
+    "toilettas (tandpasta, borstel, deodorant, zeep)",
+    "zonnebrandcr\u00e8me",
+    "lippenbalsem",
+    "ondergoed",
+    "sokken",
+    "regenjas of windjack",
+    "waterfles",
+    "snacks",
+    "zonnebril",
+    "oorstopjes",
+    "slaapmasker",
+    "herbruikbare tas",
+    "zakdoekjes of toiletpapier"
+  ]
+}
