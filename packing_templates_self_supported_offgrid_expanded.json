@@ -1,7 +1,7 @@
 {
   "hut trek (summer)": [
     "lightweight trekking backpack (30–45 liters)",
-    "hydration bladder or water bottles",
+    "water bottle(s) or hydration bladder",
     "quick‑dry clothing",
     "rain jacket",
     "snacks / energy bars",
@@ -18,7 +18,7 @@
     "hut slippers / Crocs",
     "earplugs",
     "snacks for along the way",
-    "cash for hut payments"
+    "cash for payments"
   ],
   "camping trip (wild camping)": [
     "tent or tarp",
@@ -26,7 +26,7 @@
     "sleeping bag",
     "headlamp",
     "knife or multitool",
-    "water filter",
+    "water filter or pump",
     "cookset + stove",
     "food and snacks",
     "lighter",
@@ -34,7 +34,7 @@
   ],
   "camping trip (campground)": [
     "tent",
-    "pillow",
+    "pillow or inflatable pillow",
     "chair",
     "camping table (optional)",
     "lamp or lantern",
@@ -67,7 +67,7 @@
   ],
   "snowboard / splitboard trip": [
     "splitboard or snowboard",
-    "avalanche beacon",
+    "avalanche beacon (transceiver)",
     "helmet",
     "thick gloves",
     "ski goggles",
@@ -79,7 +79,7 @@
   ],
   "long-distance hike / thru-hike": [
     "lightweight backpack",
-    "water filter",
+    "water filter or pump",
     "food supply",
     "navigation (map/compass/GPS)",
     "first aid kit",
@@ -95,7 +95,7 @@
     "noise‑cancelling headphones",
     "WiFi hotspot or local SIM card",
     "power bank",
-    "notebook",
+    "notebook + pen",
     "light clothing",
     "comfortable backpack or trolley",
     "MiFi router or portable WiFi hotspot"
@@ -181,10 +181,10 @@
     "bank card / cash",
     "comfortable shoes",
     "water bottle",
-    "downtime entertainment (e.g. book / ebook, games, laptop, journal)"
+    "entertainment (book, music, games)"
   ],
   "swimming": [
-    "swimsuit",
+    "swimwear",
     "towel",
     "sunscreen",
     "flip flops",
@@ -257,26 +257,27 @@
     "hiking poles",
     "daypack",
     "rain jacket or poncho",
-    "water bottle or hydration bladder",
+    "water bottle(s) or hydration bladder",
     "snacks / energy bars",
     "sunscreen and sunglasses",
     "cap or hat",
     "blister plasters or tape",
     "first aid kit",
-    "navigation (map, compass or GPS)"
+    "navigation (map/compass/GPS)"
   ],
   "hut-to-hut hiking": [
     "lightweight trekking backpack (30–45 liters)",
-    "water bottles or hydration bladder",
+    "water bottle(s) or hydration bladder",
     "snacks for along the way",
     "rain jacket",
     "light down jacket or warm layer",
     "quick‑dry clothing",
     "hiking boots",
     "sheet liner",
-    "slippers or indoor shoes for hut",
+    "slippers or indoor shoes for inside",
     "earplugs",
-    "reservation confirmation / cash for hut"
+    "reservation confirmation",
+    "cash for hut"
   ],
   "rock climbing": [
     "climbing shoes",
@@ -290,7 +291,8 @@
     "crampons",
     "climbing rope",
     "warm insulation layers",
-    "climbing harness and helmet"
+    "climbing harness",
+    "helmet"
   ],
   "snowshoe hiking": [
     "general items for this situation",
@@ -500,7 +502,7 @@
     "sleeping pad that fits in car",
     "warm sleeping bag",
     "sunshades or blackout covers",
-    "pillow",
+    "pillow or inflatable pillow",
     "water bottle within reach",
     "power bank or 12V charger",
     "toiletry bag",
@@ -554,7 +556,6 @@
   ],
   "travel with children": [
     "snacks and toys",
-    "first aid kit with bandages",
     "extra clothing",
     "child carrier or stroller",
     "sun protection",
@@ -570,11 +571,10 @@
     "quick snacks for en route",
     "child sleeping bag or pad",
     "travel crib or mattress (for young children)",
-    "diapers or training pants",
     "bottles and food (if applicable)",
     "baby monitor (for staying at location)",
     "pacifier or dummy",
-    "kids first aid kit (including thermometer)",
+    "kids first aid kit (including thermometer and bandages)",
     "sun hat or cap",
     "rain cover for stroller or carrier",
     "hydrating cream (for sensitive skin)"
@@ -607,7 +607,7 @@
     "first aid kit"
   ],
   "snow, ice and avalanche-prone terrain": [
-    "avalanche beacon",
+    "avalanche beacon (transceiver)",
     "shovel",
     "probe",
     "airbag backpack (if available)",
@@ -681,7 +681,7 @@
     "toiletry bag (toothpaste, brush, deodorant, soap)",
     "sunscreen",
     "lip balm",
-    "underwear",
+    "underwear per day",
     "socks",
     "rain jacket or windbreaker",
     "water bottle",

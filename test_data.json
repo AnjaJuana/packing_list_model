@@ -101,14 +101,14 @@
         "description": "I go on a skitouring trip where we also make videos/photos and the destination is Japan. Mainly sports clothes and isolation are needed (it is winter). We stay in a guesthouse. It will be 10 days.",
         "trip_types": [
             "ski tour / skitour",
-            ["ski touring", "photography", "swimming"],
+            ["ski touring", "photography"],
             "cold destination / winter",
             "minimalist",
             "conservative",
             "indoor",
             "no own vehicle",
             "avalanche-prone terrain",
-            "5 days"
+            "7+ days"
         ],
         "packing_list": ["gore-tex kleding", "comfortabele kleding", "lawinepieper", "waterfles", "zonnebril"]
     },
@@ -119,10 +119,10 @@
             ["scuba diving", "kayaking / canoeing"],
             "tropical / humid",
             "lightweight (but comfortable)",
-            "conservative",
+            "casual",
             "sleeping in a tent",
             "own vehicle",
-            "no special conditions to consider",
+            "self-supported (bring your own cooking gear)",
             "3 days"
         ],
         "packing_list": ["tent of tarp", "slaapmat", "slaapzak", "hoofdlamp", "waterfilter"]

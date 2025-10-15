@@ -50,7 +50,7 @@ def classify(model_name, trip_descr, cut_off = 0.5):
 demo = gr.Interface(
     fn=classify,
     inputs=[
-        gr.Textbox(label="Model name", value = "facebook/bart-large-mnli"),
+        gr.Textbox(label="Model name", value = "MoritzLaurer-DeBERTa-v3-large-mnli-fever-anli-ling-wanli"),
         gr.Textbox(label="Trip description"),
         gr.Number(label="Activity cut-off", value = 0.5),
     ],
