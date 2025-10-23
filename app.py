@@ -1,4 +1,7 @@
 # Prerequisites
+import os
+os.environ["OMP_NUM_THREADS"] = "1"  # Set 1, 2, or 4 depending on CPU usage
+
 from transformers import pipeline
 import json
 import pandas as pd
