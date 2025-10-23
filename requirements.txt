@@ -1,3 +1,7 @@
 transformers
-gradio
 torch
+numpy
+tabulate
+pandas
+sklearn
+gradio
