@@ -1,7 +1,4 @@
 transformers
-torch
 numpy
-tabulate
 pandas
-sklearn
 gradio
