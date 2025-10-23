@@ -1,4 +1,5 @@
 transformers
+torch
 numpy
 pandas
 gradio
