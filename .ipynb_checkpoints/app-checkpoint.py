@@ -12,10 +12,6 @@ with open("packing_label_structure.json", "r") as file:
     candidate_labels = json.load(file)
 keys_list = list(candidate_labels.keys())
 
-# Load test data (in list of dictionaries)
-with open("test_data.json", "r") as file:
-    packing_data = json.load(file)
-
 # Load packing item data
 with open("packing_templates_self_supported_offgrid_expanded.json", "r") as file:
     packing_items = json.load(file)
