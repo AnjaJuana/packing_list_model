@@ -17,49 +17,47 @@
 ### Prerequisites before you start to code: Anja
 **Hugging face account**
 
-Hugging face is a company and platform for machine learning community to collaborate on models, datasets and applications especially in the field of natural language processing.
-To be able to use the full funcitonality (e.g. acces to models, spaces, datasets, api access) and you need to make a hugging face account [here](https://huggingface.co/).
+Hugging Face is a company and platform for the machine learning community to collaborate on models, datasets and applications especially in the field of natural language processing.
+To be able to use the full funcitonality offered by Hugging Face (e.g. acces to models, spaces, datasets, api access) and you can make a free account [on their website](https://huggingface.co/).
 
-There is a new course at data camp, which is free for the remainder of 2025: https://huggingface.co/blog/huggingface/datacamp-ai-courses
+(There is a new course at data camp, which is free for the remainder of 2025: https://huggingface.co/blog/huggingface/datacamp-ai-courses)
 
 **Anaconda navigator**
-We will use anaconda navigator with thepackage and environment manager conda and use jupyter notebook to write our python code. You can download the Anaconda navigator [here](https://www.anaconda.com/products/navigator). (python is automatically installed) 
+To program our model, we use the anaconda navigator with package and environment manager conda and use jupyter notebook to write our python code. You can download the Anaconda navigator [here](https://www.anaconda.com/products/navigator). (python is automatically installed) 
 
-Using the command line you can create a new environment in which you will work and isntall the necessary packages. The following code creates a new environment that is called hf_env and activate it ([conda cheat sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)):
+Using the command line, you can create a new environment to work in and install the required packages. The following commands create a new environment called hf_env and activate it ([conda cheat sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)):
 
 ```bash
 conda create --name hf_env
 conda activate hf_env
 ```
 
-Install necessary packages using pip
+Next, install the libraries used in this project and set up Jupyter Notebook.
 ```bash
 pip install transformers torch numpy tabulate gradio pandas scikit-learn
-```
-
-Install jupyter notebook and start it up
-```bash
 conda install jupyter
 jupyter-notebook
 ```
-Create a new jupyter notebook in which you write your code. 
+Create a new Jupyter Notebook to write your code. 
 
 ### Hugging face API
-Let us first try out some Hugging Face models using their API. The advantage of using API is that you do not need to download the model locally and the computation is handled on Hugging Face servers.
+Let's first try some Hugging Face models using their API. The advantage of using API is that you do not need to download the models locally and the computation is handled on Hugging Face servers.
 To use their API you need to first create an access token. 
-Log in to your Hugging Face account and go to  Settings (on left side) > Access Tokens (on left side) > + Create new token. Select token type Read and give your token a name. 
-This access token now has to be saved in you project folder in a .env file. Create a plain text file that you call .env. Within it you write and save:
+Log in to your Hugging Face account and go to  Settings > Access Tokens > + Create new token. Select as token type *Read* and give your token a name. 
+This access token now has to be saved in you project folder in an .env file. Create a plain text file that you call .env. Within it you write and save:
 ```text
 HF_API_TOKEN=YOUR_OWN_ACCESS_TOKEN
 ```
+where you replace YOUR_OWN_ACCESS_TOKEN with your own access token. 
 
-Now we load a zero-shot-classification model using API and make a simple classification.
+Nos it's time to start coding and using a first zero-shot-classification model! In your Jupyter Notebook use a code cell to write the follwing python code:
+
 ```python
 from dotenv import load_dotenv
 import os
 import requests
 
-load_dotenv()  # Load environment variables from .env file, contains personal access token (HF_API_TOKEN=your_token)
+load_dotenv()  # Load environment variables from .env file
 headers = {"Authorization": f"Bearer {os.getenv('HF_API_TOKEN')}"}
 
 candidate_labels = ["technology", "sports", "politics", "health"]
@@ -79,17 +77,22 @@ output = query("facebook/bart-large-mnli", input_text)
 print(output)
 ```
 
+In it we first load some libraries and then the .env file. We then create some candidate labels for our zero-shot-classification model and write a query function which contains the model. The model will then classify a text using these labels and returns the following output: 
+
 ```json
 {'sequence': 'I just bought a new laptop, and it works amazing!', 'labels': ['technology', 'health', 'sports', 'politics'], 'scores': [0.970917284488678, 0.014999152161180973, 0.008272469975054264, 0.005811101291328669]}
 ```
+The scores contain a probability of the text belonging to a particular label.
 
-However the functionality using API is limited and we were only allowed to use 10 candidate labels for our models. This was not sufficient for our packing list example.
+This worked great! However, using API the functionality is limited. We were limited to 10 candidate labels for our model. This was not sufficient for our packing list model.
 
 
 ### Predefine outputs/classes: Nikky
 
 ### Model implementation: Anja
-Prerequisites
+
+Now we try to load the model locally and work with some more functionality. We load some libraries and also our clsss labels for our packing list model wich we saved in a json file and print out for your appreciation. We created several *superclasses* which each contain a list of possible class labels for our trip and will use a different zero-shot-classification model for each superclass.
+
 ```python
 import math
 import json
@@ -208,8 +211,7 @@ trip_length_days :
 	 7+ days
 ```
 
-
-We can use the pipeline function to load the model from hugging face locally and give the classifier function the trip description together with the candidate labels.
+Use the pipeline function to load the model from hugging face locally and give the classifier function the trip description together with the candidate labels.
 
 ```python
 key = keys_list[0]
