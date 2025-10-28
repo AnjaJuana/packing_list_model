@@ -211,7 +211,7 @@ trip_length_days :
 	 7+ days
 ```
 
-Use the pipeline function to load the model from hugging face locally and give the classifier function the trip description together with the candidate labels.
+Use the pipeline function to load the model from Hugging Face and give the classifier function the trip description together with the candidate labels, in this case for the superclass *activity_type*.
 
 ```python
 key = keys_list[0]
@@ -219,7 +219,7 @@ model_name = "facebook/bart-large-mnli"
 trip_descr = "I am planning a trip to Greece with my boyfriend, where we will visit two islands. We have booked an apartment on each island for a few days and plan to spend most of our time relaxing. Our main goals are to enjoy the beach, try delicious local food, and possibly go on a hike—if it’s not too hot. We will be relying solely on public transport. We’re in our late 20s and traveling from the Netherlands."
 classifier = pipeline("zero-shot-classification", model = model_name)
 result = classifier(trip_descr, candidate_labels[keys_list[0]])
-# Create DataFrame
+
 df = pd.DataFrame({
     "Label": result["labels"],
     "Score": result["scores"]
@@ -247,7 +247,7 @@ print(df)
 15               hut trek (winter)  0.002170
 ```
 
-Now we will do this for every superclass. We do something slightly different for the activities superclass since it is possible and likely to do more than one activity during your travels. Within the classifier function we set the multi_label option to True, which means that the text can belong to more than one class and each label is evaluated independently and a probability of belonging to that class is returned. We choose a 
+The most likely activity type our model predicted is beach vacation, which is correct! Now we will do this for every superclass and we choose the most likely label to be the label for our trip, except for the *activities* superclass. Since it is possible and likely to do more than one activity during your travels within the classifier function we set the multi_label option to True. This means that the text can belong to more than one class and each label is evaluated independently and a probability of belonging to that class (vs not belonging to that class) is returned. The activities that we choose as our best guess are those with a probability of more than 50 percent (cut_off = 0.5).
 
 ```python
 cut_off = 0.5
@@ -264,28 +264,36 @@ print(classes)
 ```
 
 ```text
-                             Label     Score
-0                   beach vacation  0.376311
-1   micro-adventure / weekend trip  0.350168
-2                    nature escape  0.133974
-3               digital nomad trip  0.031636
-4             cultural exploration  0.031271
-5          yoga / wellness retreat  0.012846
-6                    festival trip  0.012700
-7   long-distance hike / thru-hike  0.009527
-8                hut trek (summer)  0.008148
-9                        city trip  0.007793
-10          road trip (car/camper)  0.006512
-11              ski tour / skitour  0.005670
-12       camping trip (campground)  0.004448
-13     snowboard / splitboard trip  0.004113
-14     camping trip (wild camping)  0.002714
-15               hut trek (winter)  0.002170
-
+                            Label     Score
+0              going to the beach  0.991486
+1                        relaxing  0.977136
+2                          hiking  0.942628
+3                        swimming  0.219020
+4                     sightseeing  0.175862
+5                         running  0.098545
+6               hut-to-hut hiking  0.083704
+7                          biking  0.036792
+8                     photography  0.036690
+9                         surfing  0.030993
+10  stand-up paddleboarding (SUP)  0.025300
+11                     snorkeling  0.021451
+12                           yoga  0.011070
+13            kayaking / canoeing  0.007511
+14                  rock climbing  0.006307
+15                        fishing  0.003497
+16                    paragliding  0.002656
+17                        rafting  0.001970
+18               horseback riding  0.001560
+19                snowshoe hiking  0.001528
+20           cross-country skiing  0.001502
+21                   ice climbing  0.001434
+22                         skiing  0.001169
+23                   scuba diving  0.000789
+24                    ski touring  0.000491
 ['going to the beach', 'relaxing', 'hiking']
 ```
 
-To do this for all superclasses we use the following function
+Now we write a function that does all the predictions for each superclass automatically for a tripdescription.
 
 ```python
 # doing this for all superclasses, depending on local machine this might take a while
@@ -321,7 +329,7 @@ print(result)
 ```
 
 ```text
-Processing 9/9           superclass                              pred_class
+           superclass                              pred_class
 0       activity_type                          beach vacation
 1          activities  [going to the beach, relaxing, hiking]
 2   climate_or_season               warm destination / summer
@@ -333,14 +341,13 @@ Processing 9/9           superclass                              pred_class
 8    trip_length_days                                 7+ days
 ```
 
+And there we have the predicted labels for our trip description.
+
 ### Using gradio app: Anja
-Now we want to make it more user friendly using hte gradio app. You can for now run the app in your jupyter notebook. 
+Now, let's use the Gradio library to wrap our classification function in an interactive interface with inputs and outputs.
 
 ```python
 # Prerequisites
-from transformers import pipeline
-import json
-import pandas as pd
 import gradio as gr
 
 # get candidate labels
@@ -348,9 +355,6 @@ with open("packing_label_structure.json", "r") as file:
     candidate_labels = json.load(file)
 keys_list = list(candidate_labels.keys())
 
-# Load packing item data
-with open("packing_templates_self_supported_offgrid_expanded.json", "r") as file:
-    packing_items = json.load(file)
 ```
 
 ```python
@@ -362,7 +366,7 @@ emo = gr.Interface(
         gr.Number(label="Activity cut-off", value = 0.5),
     ],
     # outputs="dataframe",
-    outputs=[gr.Dataframe(label="DataFrame"), gr.Textbox(label="List of words")],
+    outputs=[gr.Dataframe(label="DataFrame")],
     title="Trip classification",
     description="Enter a text describing your trip",
 )
@@ -377,31 +381,150 @@ if __name__ == "__main__":
 
 
 ### Share your model: Anja
-* created space
-An easy way to share your modle is using hugging face spaces. Go to https://huggingface.co/spaces and click on "+ New Space", as SDK choose Gradio and as template Blank, as Space hardware you can choose "CPU Basic", and click on "Create Space" to create your space.
-* space as remote repository
-connected to your space is a remote git repository that you can push your code to. For this navigate to your project folder in the terminal
+**Hugging Face Spaces**
+A straightforward way to share the model with other people is to use Hugging Face Spaces, where you can create a free Space which you can potentially expand on later. Go to https://huggingface.co/spaces and click on "+ New Space", as SDK choose Gradio and as template Blank, as Space hardware choose "CPU Basic", and click on "Create Space" to create your Space.
+Connected to your space is a remote git repository which is a smooth way to push your model code to the Space. Once the Sapce is created you will see the url of your Space and some instructions of how to set it up.
+
+```bash
+# When prompted for a password, use an access token with write permissions.
+# Generate one from your settings: https://huggingface.co/settings/tokens
+git clone https://huggingface.co/spaces/<username>/<space_name>
+```
+
+In the command line navigate to your project folder, initialize git and connect the remote.
 
 ```bash
 cd path/to/your/project
 git init
-```
-
-And connect your hugging face space as a remote repository
-
-```bash
 git remote add origin https://huggingface.co/spaces/<username>/<space-name>
 ```
 
-generate an access token for your space by clicking on your icon and then selecting Access Tokens > + Create new token and as token type select Write. Give your tokena. name and click on Creat Token. Store your token securely. Use it
+To push to your remote first generate another access token for your Space. On the Hugging Face website click on your icon, select Access Tokens, then + Create new token. As token type select Write, give your token a name and click on Create Token. 
 
+The Space will automatically run the model code from a app.py file. In your project folder create the file app.py (e.g. on mac in command line: touch app.py) and open it. We need to copy all relevant code for our gradio app in it:
 
-* you need to install the required dependencies in the environment where your Hugging Face Space is running.
-* create requirements.txt file with necessary libraries
+```python
+# Prerequisites
+from transformers import pipeline
+import json
+import pandas as pd
+import gradio as gr
+
+# Get candidate labels
+with open("packing_label_structure.json", "r") as file:
+    candidate_labels = json.load(file)
+keys_list = list(candidate_labels.keys())
+
+def pred_trip(model_name, trip_descr, cut_off = 0.5):
+    """
+    Classifies trip
+    
+    Parameters:
+    model_name: name of hugging-face model
+    trip_descr: text describing the trip
+    cut_off: cut_off for choosing activities
+
+    Returns:
+    pd Dataframe: with class predictions and true values
+    """
+    
+    classifier = pipeline("zero-shot-classification", model=model_name)
+    df = pd.DataFrame(columns=['superclass', 'pred_class'])
+    for i, key in enumerate(keys_list):
+        print(f"\rProcessing {i + 1}/{len(keys_list)}", end="", flush=True)
+        if key == 'activities':
+            result = classifier(trip_descr, candidate_labels[key], multi_label=True)
+            indices = [i for i, score in enumerate(result['scores']) if score > cut_off]
+            classes = [result['labels'][i] for i in indices]
+        else:
+            result = classifier(trip_descr, candidate_labels[key])
+            classes = result["labels"][0]
+        df.loc[i] = [key, classes]
+    return df
+
+demo = gr.Interface(
+    fn=pred_trip,
+    inputs=[
+        gr.Textbox(label="Model name", value = "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli"),
+        gr.Textbox(label="Trip description"),
+        gr.Number(label="Activity cut-off", value = 0.5),
+    ],
+    # outputs="dataframe",
+    outputs=[gr.Dataframe(label="DataFrame")],
+    title="Trip classification",
+    description="Enter a text describing your trip",
+)
+
+# Launch the Gradio app
+if __name__ == "__main__":
+    demo.launch()
+```
+
+Additionally we need to create a plain text requirements file called requirements.txt, which tells Hugging Face which Python dependencies to install before running your app. Write and save the following in your requirements.txt file:
+
+```text
+transformers
+torch
+numpy
+pandas
+gradio
+```
+
+After you add, commit and push these changes to your remote you can go to the url of your space and try it out!
+
+```text
+https://huggingface.co/spaces/<username>/<space-name>
+```
+
 
 
 ## Performance assessment: Anja
-* Test data creation
+To asses the performance of different zero-shot classification models we manually created a small test data set of 10 trip descriptions and correct classifications. We used the 10 of the most downloaded Hugging Face Models to compare classification performance. Performance was assessed in terms of accuracy (percentage of correct classifications/total classifications) for all superclasses except for the activities class. More than one type of activity can be correct and we use the percentage of correctly identified activities (#correct activities/#total correct activities) and the percentage of wrongly identified activities (#wrong activities/#total predicted activities) to asses the performance of the activities prediction.
+
+Let's first have a look at three of our test data trip descriptions and true class labels:
+
+
+```text
+I am going on a multiple day hike and passing though mountains and the beach in Croatia. I like to pack light and will stay in refugios/huts with half board and travel to the start of the hike by car. It will be 6-7 days. 
+
+long-distance hike / thru-hike
+['going to the beach']
+tropical / humid
+minimalist
+casual
+huts with half board
+own vehicle
+off-grid / no electricity
+6 days
+
+
+I will go with a friend on a beach holiday and we will do stand-up paddling, and surfing in the North of Spain. The destination is windy and can get cold, but is generally sunny. We will go by car and bring a tent to sleep in. It will be two weeks. 
+
+beach vacation
+['stand-up paddleboarding (SUP)', 'surfing']
+cold destination / winter
+ultralight
+casual
+sleeping in a tent
+own vehicle
+off-grid / no electricity
+6 days
+
+
+We will go to Sweden in the winter, to go for a yoga and sauna/wellness retreat. I prefer lightweight packing and also want clothes to go for fancy dinners and maybe on a winter hike. We stay in hotels. 
+
+yoga / wellness retreat
+['hiking', 'yoga']
+cold destination / winter
+lightweight (but comfortable)
+casual
+indoor
+no own vehicle
+snow and ice
+7 days
+```
+
+We computed averages of performance measures for each model.
 
 
 ## Closing
