@@ -14,16 +14,15 @@
   * mention gradio app to make it user friendly and spaces to share model
 
 ## Implementation of packing list model
-### Prerequisites before you start to code: Anja
+### Set up: Anja
 **Hugging face account**
 
-Hugging Face is a company and platform for the machine learning community to collaborate on models, datasets and applications especially in the field of natural language processing.
-To be able to use the full funcitonality offered by Hugging Face (e.g. acces to models, spaces, datasets, api access) and you can make a free account [on their website](https://huggingface.co/).
-
+Hugging Face is a company and platform for the machine learning community to collaborate on models, datasets and applications, especially in the field of natural language processing.
+To be able to use the full functionality offered by Hugging Face (e.g. acces to models, spaces, datasets, API access) you can create a free account [on their website](https://huggingface.co/).
 (There is a new course at data camp, which is free for the remainder of 2025: https://huggingface.co/blog/huggingface/datacamp-ai-courses)
 
 **Anaconda navigator**
-To program our model, we use the anaconda navigator with package and environment manager conda and use jupyter notebook to write our python code. You can download the Anaconda navigator [here](https://www.anaconda.com/products/navigator). (python is automatically installed) 
+To program our model, we use the anaconda navigator with package and environment manager conda, as well as Jupyter Notebook to write our python code. You can download the Anaconda navigator [here](https://www.anaconda.com/products/navigator). (python is automatically installed) 
 
 Using the command line, you can create a new environment to work in and install the required packages. The following commands create a new environment called hf_env and activate it ([conda cheat sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)):
 
@@ -38,7 +37,7 @@ pip install transformers torch numpy tabulate gradio pandas scikit-learn
 conda install jupyter
 jupyter-notebook
 ```
-Create a new Jupyter Notebook to write your code. 
+Create a new Jupyter Notebook for this project. 
 
 ### Hugging face API
 Let's first try some Hugging Face models using their API. The advantage of using API is that you do not need to download the models locally and the computation is handled on Hugging Face servers.
@@ -50,12 +49,13 @@ HF_API_TOKEN=YOUR_OWN_ACCESS_TOKEN
 ```
 where you replace YOUR_OWN_ACCESS_TOKEN with your own access token. 
 
-Nos it's time to start coding and using a first zero-shot-classification model! In your Jupyter Notebook use a code cell to write the follwing python code:
+Now it's time to start coding and try a first zero-shot-classification model! In your Jupyter Notebook use a code cell to write the following python code:
 
 ```python
 from dotenv import load_dotenv
 import os
 import requests
+import json
 
 load_dotenv()  # Load environment variables from .env file
 headers = {"Authorization": f"Bearer {os.getenv('HF_API_TOKEN')}"}
@@ -63,7 +63,7 @@ headers = {"Authorization": f"Bearer {os.getenv('HF_API_TOKEN')}"}
 candidate_labels = ["technology", "sports", "politics", "health"]
 
 def query(model, input_text):
-    API_URL = f"https://api-inference.huggingface.co/models/{model}"
+    API_URL = f"https://router.huggingface.co/hf-inference/models/{model}"
     payload = {
         "inputs": input_text,
         "parameters": {"candidate_labels": candidate_labels}
@@ -71,16 +71,32 @@ def query(model, input_text):
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
 
-input_text = "I just bought a new laptop, and it works amazing!"
-
-output = query("facebook/bart-large-mnli", input_text)
-print(output)
 ```
 
-In it we first load some libraries and then the .env file. We then create some candidate labels for our zero-shot-classification model and write a query function which contains the model. The model will then classify a text using these labels and returns the following output: 
+In it we first load necessary libraries and then the .env file. We then create some candidate labels for our zero-shot-classification model and write a query function which receives a model name and an input text that needs to be classified and returns its classification. Trying the query function with the model "facebook/bart-large-mnli" from Hugging Face and a short input text we get the following: 
+
+```python
+input_text = "I just bought a new laptop, and it works amazing!"
+output = query("facebook/bart-large-mnli", input_text)
+print(json.dumps(output, indent=4))
+```
 
 ```json
-{'sequence': 'I just bought a new laptop, and it works amazing!', 'labels': ['technology', 'health', 'sports', 'politics'], 'scores': [0.970917284488678, 0.014999152161180973, 0.008272469975054264, 0.005811101291328669]}
+{
+    "sequence": "I just bought a new laptop, and it works amazing!",
+    "labels": [
+        "technology",
+        "health",
+        "sports",
+        "politics"
+    ],
+    "scores": [
+        0.970917284488678,
+        0.014999152161180973,
+        0.008272469975054264,
+        0.005811101291328669
+    ]
+}
 ```
 The scores contain a probability of the text belonging to a particular label.
 
@@ -479,7 +495,7 @@ https://huggingface.co/spaces/<username>/<space-name>
 
 
 ## Performance assessment: Anja
-To asses the performance of different zero-shot classification models we manually created a small test data set of 10 trip descriptions and correct classifications. We used the 10 of the most downloaded Hugging Face Models to compare classification performance. Performance was assessed in terms of accuracy (percentage of correct classifications/total classifications) for all superclasses except for the activities class. More than one type of activity can be correct and we use the percentage of correctly identified activities (#correct activities/#total correct activities) and the percentage of wrongly identified activities (#wrong activities/#total predicted activities) to asses the performance of the activities prediction.
+To asses the performance of different zero-shot classification models we manually created a small test data set of 10 trip descriptions and correct classifications. We used 12 of the most popular zero-shot-classification Hugging Face Models to compare classification performance. Performance was assessed in terms of accuracy (percentage of correct classifications/total classifications) for all superclasses excluding for the activities class. More than one type of activity can be correct and we use the percentage of correctly identified activities (#correctly identified/#total correct activities) and the percentage of wrongly identified activities (#falsly predicted/#total predicted activities) to asses the performance of the activities classification.
 
 Let's first have a look at three of our test data trip descriptions and true class labels:
 
@@ -496,35 +512,27 @@ huts with half board
 own vehicle
 off-grid / no electricity
 6 days
-
-
-I will go with a friend on a beach holiday and we will do stand-up paddling, and surfing in the North of Spain. The destination is windy and can get cold, but is generally sunny. We will go by car and bring a tent to sleep in. It will be two weeks. 
-
-beach vacation
-['stand-up paddleboarding (SUP)', 'surfing']
-cold destination / winter
-ultralight
-casual
-sleeping in a tent
-own vehicle
-off-grid / no electricity
-6 days
-
-
-We will go to Sweden in the winter, to go for a yoga and sauna/wellness retreat. I prefer lightweight packing and also want clothes to go for fancy dinners and maybe on a winter hike. We stay in hotels. 
-
-yoga / wellness retreat
-['hiking', 'yoga']
-cold destination / winter
-lightweight (but comfortable)
-casual
-indoor
-no own vehicle
-snow and ice
-7 days
 ```
 
-We computed averages of performance measures for each model.
+Our predictions using e.g. model "" could now look like this
+
+We computed averages of performance measures for each model sorted by accuracy and averaged over our 10 test data sets.
+
+```text
+                                                        model  accuracy  true_ident  false_pred
+0    MoritzLaurer-DeBERTa-v3-large-mnli-fever-anli-ling-wanli  0.611111    0.841667    0.546667
+1                       sileod-deberta-v3-base-tasksource-nli  0.566667    0.700000    0.551667
+2                MoritzLaurer-DeBERTa-v3-base-mnli-fever-anli  0.522222    0.841667    0.572381
+3                 MoritzLaurer-deberta-v3-large-zeroshot-v2.0  0.500000    0.325000    0.500000
+4                               valhalla-distilbart-mnli-12-1  0.500000    0.300000    0.533333
+5   MoritzLaurer-mDeBERTa-v3-base-xnli-multilingual-nli-2mil7  0.488889    0.833333    0.688373
+6                          cross-encoder-nli-deberta-v3-large  0.466667    0.566667    0.541667
+7                                    facebook-bart-large-mnli  0.466667    0.708333    0.400000
+8                     MoritzLaurer-mDeBERTa-v3-base-mnli-xnli  0.455556    0.408333    0.481250
+9                           cross-encoder-nli-deberta-v3-base  0.444444    0.533333    0.712500
+10                      joeddav-bart-large-mnli-yahoo-answers  0.355556    0.650000    0.553792
+11                                pongjin-roberta_with_kornli  0.233333    0.666667    0.452857
+```
 
 
 ## Closing
