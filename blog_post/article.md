@@ -73,7 +73,7 @@ def query(model, input_text):
 
 ```
 
-In it we first load necessary libraries and then the .env file. We then create some candidate labels for our zero-shot-classification model and write a query function which receives a model name and an input text that needs to be classified and returns its classification. Trying the query function with the model "facebook/bart-large-mnli" from Hugging Face and a short input text we get the following: 
+In it we first load necessary libraries, then the .env file. We then create some candidate labels for our zero-shot-classification model and write a query function which receives a model name and an input text and returns its classification. Trying the query function with the model "facebook/bart-large-mnli" from Hugging Face and a short input text we get the following: 
 
 ```python
 input_text = "I just bought a new laptop, and it works amazing!"
@@ -98,16 +98,16 @@ print(json.dumps(output, indent=4))
     ]
 }
 ```
-The scores contain a probability of the text belonging to a particular label.
+The scores contain probabilities of the text belonging to a particular class label.
 
-This worked great! However, using API the functionality is limited. We were limited to 10 candidate labels for our model. This was not sufficient for our packing list model.
+This worked great! However, using API the functionality is limited. We were limited to 10 candidate labels for our classification. This was not sufficient for our packing list model.
 
 
 ### Predefine outputs/classes: Nikky
 
 ### Model implementation: Anja
 
-Now we try to load the model locally and work with some more functionality. We load some libraries and also our clsss labels for our packing list model wich we saved in a json file and print out for your appreciation. We created several *superclasses* which each contain a list of possible class labels for our trip and will use a different zero-shot-classification model for each superclass.
+Now we try to load the model locally and work with some more functionality. We load necessary libraries and our class labels from a json file. We created several *superclasses* which each contain a list of possible class labels for our trip. We will use a different zero-shot-classification model for each superclass.
 
 ```python
 import math
@@ -227,14 +227,13 @@ trip_length_days :
 	 7+ days
 ```
 
-Use the pipeline function to load the model from Hugging Face and give the classifier function the trip description together with the candidate labels, in this case for the superclass *activity_type*.
+Now we use the pipeline function to load the model from Hugging Face and give the classifier function the trip description together with the candidate labels, in this case for the superclass *activity_type*.
 
 ```python
-key = keys_list[0]
 model_name = "facebook/bart-large-mnli"
 trip_descr = "I am planning a trip to Greece with my boyfriend, where we will visit two islands. We have booked an apartment on each island for a few days and plan to spend most of our time relaxing. Our main goals are to enjoy the beach, try delicious local food, and possibly go on a hike—if it’s not too hot. We will be relying solely on public transport. We’re in our late 20s and traveling from the Netherlands."
 classifier = pipeline("zero-shot-classification", model = model_name)
-result = classifier(trip_descr, candidate_labels[keys_list[0]])
+result = classifier(trip_descr, candidate_labels["activity_type"])
 
 df = pd.DataFrame({
     "Label": result["labels"],
@@ -263,17 +262,16 @@ print(df)
 15               hut trek (winter)  0.002170
 ```
 
-The most likely activity type our model predicted is beach vacation, which is correct! Now we will do this for every superclass and we choose the most likely label to be the label for our trip, except for the *activities* superclass. Since it is possible and likely to do more than one activity during your travels within the classifier function we set the multi_label option to True. This means that the text can belong to more than one class and each label is evaluated independently and a probability of belonging to that class (vs not belonging to that class) is returned. The activities that we choose as our best guess are those with a probability of more than 50 percent (cut_off = 0.5).
+The most likely activity type our model predicted is beach vacation, which is correct! Now we will do this for every superclass and choose the most likely label for our trip, except for the *activities* superclass. Since it is possible and likely to do more than one activity during your trip within the classifier function we set the multi_label option to True. This means that the text can belong to more than one class and each label is evaluated independently and a probability of belonging to that class (vs not belonging to that class) is returned. The activities that we choose as our best guess are those with a probability of more than 50 percent.
 
 ```python
 cut_off = 0.5
 result_activ = classifier(trip_descr, candidate_labels["activities"], multi_label=True)
-indices = [i for i, score in enumerate(result_activ['scores']) if score > cut_off]
-classes = [result_activ['labels'][i] for i in indices]
+classes = df.loc[df["Score"] > 0.5, "Label"].tolist()
 
 df = pd.DataFrame({
-    "Label": result["labels"],
-    "Score": result["scores"]
+    "Label": result_activ["labels"],
+    "Score": result_activ["scores"]
 })
 print(df)
 print(classes)
@@ -309,10 +307,9 @@ print(classes)
 ['going to the beach', 'relaxing', 'hiking']
 ```
 
-Now we write a function that does all the predictions for each superclass automatically for a tripdescription.
+Now we write a function that does all the predictions for each superclass for a trip description automatically.
 
 ```python
-# doing this for all superclasses, depending on local machine this might take a while
 def pred_trip(model_name, trip_descr, cut_off = 0.5):
     """
     Classifies trip
@@ -363,7 +360,6 @@ And there we have the predicted labels for our trip description.
 Now, let's use the Gradio library to wrap our classification function in an interactive interface with inputs and outputs.
 
 ```python
-# Prerequisites
 import gradio as gr
 
 # get candidate labels
