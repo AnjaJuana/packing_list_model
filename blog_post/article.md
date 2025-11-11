@@ -110,7 +110,7 @@ This worked great! However, using API the functionality is limited. We were limi
 
 ### Model implementation: Anja
 
-Now we load the model locally and work with some more functionality. We load necessary libraries and our class labels from a json file. We created several *superclasses* which each contain a list of possible class labels for our trip. We will use a different zero-shot-classification model for each superclass.
+Now we load the model locally and work with additional functionality. We import the required libraries and load our class labels from a JSON file. The last code block prints out these classes, sorted into several *superclasses*. For each superclass, we will use a dedicated zero-shot classification model and therefore get a list of relevant class labels for out trip.
 
 ```python
 import pandas as pd
@@ -118,7 +118,6 @@ import matplotlib.pyplot as plt
 from tabulate import tabulate
 from transformers import pipeline
 
-# Get candidate labels
 with open("packing_label_structure.json", "r") as file:
     candidate_labels = json.load(file)
 keys_list = list(candidate_labels.keys())
@@ -225,7 +224,7 @@ trip_length_days :
 	 7+ days
 ```
 
-Now we use the pipeline function to load the model from Hugging Face and give the classifier function the trip description together with the candidate labels, in this case for the superclass *activity_type*.
+Next, we use the pipeline function to load the model *facebook/bart-large-mnli* from Hugging Face. After that, we pass the trip description, along with the candidate labels for the *activity_type* superclass, to the classifier and print the output as a pandas DataFrame.
 
 ```python
 model_name = "facebook/bart-large-mnli"
@@ -260,7 +259,7 @@ print(df)
 15               hut trek (winter)  0.002170
 ```
 
-The most likely activity type our model predicted is beach vacation, which is correct! Now we will do this for every superclass and choose the most likely label for our trip, except for the *activities* superclass. Since it is possible and likely to do more than one activity during your trip within the classifier function we set the multi_label option to True. This means that the text can belong to more than one class and each label is evaluated independently and a probability of belonging to that class (vs not belonging to that class) is returned. The activities that we choose as our best guess are those with a probability of more than 50 percent.
+The most likely activity type our model predicted is "beach vacation", which is correct! Now we will do this for every superclass and choose the most likely class label for our trip, except for the *activities* superclass. Because it is possible and likely to engaeg in more than one activity during a trip, we enable the multi_label otion within the classifier function. This means that the text can belong to more than one class. For this, each class label is evaluated independently and a probability of belonging to that class (vs not belonging) is returned. The activities that we select as our best guess are those with a probability of more than 50 percent.
 
 ```python
 cut_off = 0.5
@@ -305,7 +304,7 @@ print(classes)
 ['going to the beach', 'relaxing', 'hiking']
 ```
 
-Now we write a function that does all the predictions for each superclass for a trip description automatically.
+We now write a function that automatically performs all predictions for each superclass based on a given trip description and try it out.
 
 ```python
 def pred_trip(model_name, trip_descr, cut_off = 0.5):
@@ -318,7 +317,7 @@ def pred_trip(model_name, trip_descr, cut_off = 0.5):
     cut_off: cut_off for choosing activities
 
     Returns:
-    pd Dataframe: with class predictions and true values
+    pd Dataframe: with class predictions
     """
     
     classifier = pipeline("zero-shot-classification", model=model_name)
@@ -352,26 +351,18 @@ print(result)
 8    trip_length_days                                 7+ days
 ```
 
-And there we have the predicted labels for our trip description.
+And with that, we obtain the predicted labels for our trip description.
 
-### Using gradio app: Anja
-Now, let's use the Gradio library to wrap our classification function in an interactive interface with inputs and outputs.
+### Gradio App: Anja
+Next, let's use the Gradio library to wrap our classification function in an interactive interface with inputs and outputs. We pass our function pred_trip, along with the input and output formats and some default values, to the gr.Interface function. 
 
 ```python
 import gradio as gr
 
-# get candidate labels
-with open("packing_label_structure.json", "r") as file:
-    candidate_labels = json.load(file)
-keys_list = list(candidate_labels.keys())
-
-```
-
-```python
-emo = gr.Interface(
+demo = gr.Interface(
     fn=pred_trip,
     inputs=[
-        gr.Textbox(label="Model name", value = "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli"),
+        gr.Textbox(label="Model name", value = "facebook/bart-large-mnli"),
         gr.Textbox(label="Trip description"),
         gr.Number(label="Activity cut-off", value = 0.5),
     ],
@@ -387,12 +378,15 @@ if __name__ == "__main__":
 
 ```
 
+
 ![Demo of my Gradio app](./img/gradio_pred_trip.png)
+
+The app is now ready to take your trip description and return a list of predicted class labels for your trip.
 
 
 ### Share your model: Anja
 **Hugging Face Spaces**
-A straightforward way to share the model with other people is to use Hugging Face Spaces, where you can create a free Space which you can potentially expand on later. Go to https://huggingface.co/spaces and click on "+ New Space", as SDK choose Gradio and as template Blank, as Space hardware choose "CPU Basic", and click on "Create Space" to create your Space.
+A simple way to share your model with others is to use Hugging Face Spaces, where you can create a free Space that can expanded later. Go to https://huggingface.co/spaces and click on "+ New Space", as SDK choose Gradio and as template Blank, as Space hardware choose "CPU Basic", and click on "Create Space" to create your Space.
 Connected to your space is a remote git repository which is a smooth way to push your model code to the Space. Once the Sapce is created you will see the url of your Space and some instructions of how to set it up.
 
 ```bash
