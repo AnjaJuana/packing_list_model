@@ -82,21 +82,24 @@ print(json.dumps(output, indent=4))
 ```
 
 ```json
-{
-    "sequence": "I just bought a new laptop, and it works amazing!",
-    "labels": [
-        "technology",
-        "health",
-        "sports",
-        "politics"
-    ],
-    "scores": [
-        0.970917284488678,
-        0.014999152161180973,
-        0.008272469975054264,
-        0.005811101291328669
-    ]
-}
+[
+    {
+        "label": "technology",
+        "score": 0.970917284488678
+    },
+    {
+        "label": "health",
+        "score": 0.014999152161180973
+    },
+    {
+        "label": "sports",
+        "score": 0.008272469975054264
+    },
+    {
+        "label": "politics",
+        "score": 0.005811101291328669
+    }
+]
 ```
 The scores contain probabilities of the text belonging to a particular class label.
 
@@ -107,14 +110,9 @@ This worked great! However, using API the functionality is limited. We were limi
 
 ### Model implementation: Anja
 
-Now we try to load the model locally and work with some more functionality. We load necessary libraries and our class labels from a json file. We created several *superclasses* which each contain a list of possible class labels for our trip. We will use a different zero-shot-classification model for each superclass.
+Now we load the model locally and work with some more functionality. We load necessary libraries and our class labels from a json file. We created several *superclasses* which each contain a list of possible class labels for our trip. We will use a different zero-shot-classification model for each superclass.
 
 ```python
-import math
-import json
-import pickle
-import os
-import time
 import pandas as pd
 import matplotlib.pyplot as plt
 from tabulate import tabulate
