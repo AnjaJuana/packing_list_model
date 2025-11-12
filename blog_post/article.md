@@ -15,16 +15,15 @@
 
 ## Implementation of packing list model
 ### Set up: Anja
-**Hugging face account**
 
 Hugging Face is a company and platform for the machine learning community to collaborate on models, datasets and applications, especially in the field of natural language processing.
-To be able to use the full functionality offered by Hugging Face (e.g. acces to models, spaces, datasets, API access) you can create a free account [on their website](https://huggingface.co/).
+To be able to use the full functionality offered by Hugging Face (e.g. access to models, spaces, datasets, API access) you can create a free account on their website https://huggingface.co/.
 (There is a new course at data camp, which is free for the remainder of 2025: https://huggingface.co/blog/huggingface/datacamp-ai-courses)
 
-**Anaconda navigator**
-To program our model, we use the anaconda navigator with package and environment manager conda, as well as Jupyter Notebook to write our python code. You can download the Anaconda navigator [here](https://www.anaconda.com/products/navigator). (python is automatically installed) 
 
-Using the command line, you can create a new environment to work in and install the required packages. The following commands create a new environment called hf_env and activate it ([conda cheat sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)):
+To develop our model, we use the Anaconda Navigator, which includes the package and environment manager conda, as well as Jupyter Notebook for writing and running Python code. You can download the Anaconda navigator from their website https://www.anaconda.com/products/navigator. (Python is installed automatically) 
+
+Using the command line, you can create a new environment to work in and install the required packages. The following commands create a new environment called hf_env and activate it:
 
 ```bash
 conda create --name hf_env
@@ -32,6 +31,7 @@ conda activate hf_env
 ```
 
 Next, install the libraries used in this project and set up Jupyter Notebook.
+
 ```bash
 pip install transformers torch numpy tabulate gradio pandas scikit-learn
 conda install jupyter
@@ -39,17 +39,19 @@ jupyter-notebook
 ```
 Create a new Jupyter Notebook for this project. 
 
+
 ### Hugging face API
-Let's first try some Hugging Face models using their API. The advantage of using API is that you do not need to download the models locally and the computation is handled on Hugging Face servers.
-To use their API you need to first create an access token. 
-Log in to your Hugging Face account and go to  Settings > Access Tokens > + Create new token. Select as token type *Read* and give your token a name. 
-This access token now has to be saved in you project folder in an .env file. Create a plain text file that you call .env. Within it you write and save:
+Let us first try out some Hugging Face models using their API. The main advantage of using the API is that you do not need to download the models locally and all computations are handled on Hugging Face servers.
+
+To use their API you first need to create an access token. Go to https://huggingface.co/settings/tokens and click on *+ Create new token*. Select as token type *Read* and give your token a name. 
+Next, save this access token in your project folder within a .env file. Create a plain text file named .env, then add and save the following line inside it:
+
 ```text
 HF_API_TOKEN=YOUR_OWN_ACCESS_TOKEN
 ```
-where you replace YOUR_OWN_ACCESS_TOKEN with your own access token. 
+, where you replace YOUR_OWN_ACCESS_TOKEN with your actual access token. 
 
-Now it's time to start coding and try a first zero-shot-classification model! In your Jupyter Notebook use a code cell to write the following python code:
+Now it is time to start coding and try out your first zero-shot-classification model. In your Jupyter Notebook, create a code cell and enter the following Python code:
 
 ```python
 from dotenv import load_dotenv
@@ -57,7 +59,7 @@ import os
 import requests
 import json
 
-load_dotenv()  # Load environment variables from .env file
+load_dotenv()  
 headers = {"Authorization": f"Bearer {os.getenv('HF_API_TOKEN')}"}
 
 candidate_labels = ["technology", "sports", "politics", "health"]
@@ -73,7 +75,9 @@ def query(model, input_text):
 
 ```
 
-In it we first load necessary libraries, then the .env file. We then create some candidate labels for our zero-shot-classification model and write a query function which receives a model name and an input text and returns its classification. Trying the query function with the model "facebook/bart-large-mnli" from Hugging Face and a short input text we get the following: 
+In this code, we first load the necessary libraries and then the .env file. Next, we then define a set of candidate labels for our zero-shot classification model and create a query function which receives a model name and an input text and returns the model's classification. 
+
+Trying the query function with the model "facebook/bart-large-mnli" from Hugging Face and a short input text we get the following result: 
 
 ```python
 input_text = "I just bought a new laptop, and it works amazing!"
@@ -101,9 +105,9 @@ print(json.dumps(output, indent=4))
     }
 ]
 ```
-The scores contain probabilities of the text belonging to a particular class label.
+The scores represent the probabilities of the text belonging to a particular class label.
 
-This worked great! However, using API the functionality is limited. We were limited to 10 candidate labels for our classification. This was not sufficient for our packing list model.
+This approach worked great! However, using the API the functionality is limited. We were limited to 10 candidate labels for our classification, which was not sufficient for our packing list model.
 
 
 ### Predefine outputs/classes: Nikky
@@ -386,16 +390,17 @@ The app is now ready to take your trip description and return a list of predicte
 
 ### Share your model: Anja
 **Hugging Face Spaces**
-A simple way to share your model with others is to use Hugging Face Spaces, where you can create a free Space that can expanded later. Go to https://huggingface.co/spaces and click on "+ New Space", as SDK choose Gradio and as template Blank, as Space hardware choose "CPU Basic", and click on "Create Space" to create your Space.
-Connected to your space is a remote git repository which is a smooth way to push your model code to the Space. Once the Sapce is created you will see the url of your Space and some instructions of how to set it up.
+A simple way to share your model with others is to use Hugging Face Spaces, where you can create a free Space that can be expanded later. Go to https://huggingface.co/spaces and click on "+ New Space", as SDK choose Gradio, as template Blank, as Space hardware choose "CPU Basic", and click on "Create Space" to create your Space.
+Connected to your space is a remote git repository which is a smooth way to push your model code to the Space. Once the Space is created you will see the url of your Space and some instructions of how to set it up.
 
 ```bash
 # When prompted for a password, use an access token with write permissions.
 # Generate one from your settings: https://huggingface.co/settings/tokens
 git clone https://huggingface.co/spaces/<username>/<space_name>
 ```
+As prompted, go to https://huggingface.co/settings/tokens to generate an access token. Click on *+ Create new token*, set the token type to *Write*. Give your token a name and click on *Create Token*. You will use this token as a password to push to your remote repository. 
 
-In the command line navigate to your project folder, initialize git and connect the remote.
+Next, open the command line, navigate to your project folder, initialize git and connect it to the remote repository.
 
 ```bash
 cd path/to/your/project
@@ -403,18 +408,14 @@ git init
 git remote add origin https://huggingface.co/spaces/<username>/<space-name>
 ```
 
-To push to your remote first generate another access token for your Space. On the Hugging Face website click on your icon, select Access Tokens, then + Create new token. As token type select Write, give your token a name and click on Create Token. 
-
-The Space will automatically run the model code from a app.py file. In your project folder create the file app.py (e.g. on mac in command line: touch app.py) and open it. We need to copy all relevant code for our gradio app in it:
+The Space will automatically run the model code from a file named app.py. In your project folder, create this file (e.g. on mac in command line: touch app.py) and open it. Copy all relevant code for your Gradio app into this file and save it.
 
 ```python
-# Prerequisites
 from transformers import pipeline
 import json
 import pandas as pd
 import gradio as gr
 
-# Get candidate labels
 with open("packing_label_structure.json", "r") as file:
     candidate_labels = json.load(file)
 keys_list = list(candidate_labels.keys())
@@ -429,7 +430,7 @@ def pred_trip(model_name, trip_descr, cut_off = 0.5):
     cut_off: cut_off for choosing activities
 
     Returns:
-    pd Dataframe: with class predictions and true values
+    pd Dataframe: with class predictions
     """
     
     classifier = pipeline("zero-shot-classification", model=model_name)
@@ -449,11 +450,10 @@ def pred_trip(model_name, trip_descr, cut_off = 0.5):
 demo = gr.Interface(
     fn=pred_trip,
     inputs=[
-        gr.Textbox(label="Model name", value = "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli"),
+        gr.Textbox(label="Model name", value = "facebook/bart-large-mnli"),
         gr.Textbox(label="Trip description"),
         gr.Number(label="Activity cut-off", value = 0.5),
     ],
-    # outputs="dataframe",
     outputs=[gr.Dataframe(label="DataFrame")],
     title="Trip classification",
     description="Enter a text describing your trip",
@@ -464,7 +464,9 @@ if __name__ == "__main__":
     demo.launch()
 ```
 
-Additionally we need to create a plain text requirements file called requirements.txt, which tells Hugging Face which Python dependencies to install before running your app. Write and save the following in your requirements.txt file:
+Additionally, in your project folder, create a plain text file named requirements.txt.
+This file tells Hugging Face which Python dependencies to install before running your app.
+Add the following lines to your requirements.txt file and save it:
 
 ```text
 transformers
@@ -474,37 +476,27 @@ pandas
 gradio
 ```
 
-After you add, commit and push these changes to your remote you can go to the url of your space and try it out!
+After that, add, commit, and push your changes to the remote repository.
+
+```bash
+git add .
+git commit -m "Initial commit"
+git push origin main
+```
+
+Once the push is complete, go to the URL of your Space and try it out!
 
 ```text
 https://huggingface.co/spaces/<username>/<space-name>
 ```
 
 
-
 ## Performance assessment: Anja
-To asses the performance of different zero-shot classification models we manually created a small test data set of 10 trip descriptions and correct classifications. We used 12 of the most popular zero-shot-classification Hugging Face Models to compare classification performance. Performance was assessed in terms of accuracy (percentage of correct classifications/total classifications) for all superclasses excluding for the activities class. More than one type of activity can be correct and we use the percentage of correctly identified activities (#correctly identified/#total correct activities) and the percentage of wrongly identified activities (#falsly predicted/#total predicted activities) to asses the performance of the activities classification.
+To evaluate the performance of different zero-shot classification models, we manually created a small test data set of 10 trip descriptions with corresponding class labels. We compared 12 of the most popular zero-shot classification Models available on Hugging Face. 
 
-Let's first have a look at three of our test data trip descriptions and true class labels:
+Performance was assessed in terms of accuracy (#correct classifications/#total classifications) for all superclasses, excluding the activities superclass. Since more than one type of activity can be correct for a single trip, we use the percentage of correctly identified activities (#correctly identified/#total correct activities) and the percentage of wrongly predicted activities (#falsly predicted/#total predicted activities) to asses its performance.
 
-
-```text
-I am going on a multiple day hike and passing though mountains and the beach in Croatia. I like to pack light and will stay in refugios/huts with half board and travel to the start of the hike by car. It will be 6-7 days. 
-
-long-distance hike / thru-hike
-['going to the beach']
-tropical / humid
-minimalist
-casual
-huts with half board
-own vehicle
-off-grid / no electricity
-6 days
-```
-
-Our predictions using e.g. model "" could now look like this
-
-We computed averages of performance measures for each model sorted by accuracy and averaged over our 10 test data sets.
+We then computed the average performance measures (across the test dataset) for each model and ranked them by accuracy.
 
 ```text
                                                         model  accuracy  true_ident  false_pred
