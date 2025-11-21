@@ -1,17 +1,48 @@
 # Working with Large Language Models
 ## Introduction: Nikky
-* What are LLMs and why are they popular
-* How to use the open source platform to use LLMs for own application; example of creating a packing list.
+
+Nowadays many people regularly use AI chatbots. These chatbots “understand” text and talk with you like they are humans with an above average level of knowledge (…when they are not hallucinating or answering falsely ;-) ). Behind such bots and systems is usually a Large Language Model (LLM). This is an AI-model trained on enormous amount of texts, so that it can recognize the meaning and logic of language.
 
 ## Why bother to adapt models to your application: Nikky
-* Problems of LLMS: Hallucination and wrong outputs
-* Controll outputs by using zero-shot-calssification
-  * briefly mention other types of classification
-* How we do it with our packing list model
-  * Why not use packing items as classes
-  * Use superclasses to categories trip and have packing items correspond to superclasses
-  * Asses performance with small test data set
-  * mention gradio app to make it user friendly and spaces to share model
+### What are LLM’s used for in practice?
+
+A cool characteristic of LLM’s, is that they can respond in a very logical and natural way. That is why they are currently used more and more to analyze text, but also to organize information and even to generate creative ideas. AI agents are now also gaining very much in popularity, these agents are using LLM’s and automatization to learn and automatize processes. Since we were interested in their potential on a real life application, we tested how we can use LLM’s in providing personalized packing lists to know what to take on your holiday, adventure travel and/or business trip.
+
+## The application: Personalized Holiday packing lists
+
+The goal of the project is to develop a framework using LLM’s that automatically generates packing lists based on a textual description of a trip. This description can be really short (“a weekend camping in the mountains”) or much more elaborate (“10 days tour through Iceland in summer with hikes, camping and remote workdays. I will also do strength training, yoga and sleep outside”). The model will for instance try to understand the type, destination and duration of the trip, the season, and potential extra activities or characteristics and will then provice a list of potentially necessary items to pack for each trip.
+
+We tested several open source NLI en zero-shot models (such as BART and DeBERTa - more about them later) to see which one performs the best on several different indicators. We have found that the standard models and options are not always directly fittable to any situation, and that when you plan to ‘use an LLM in practice’ for your own application, you might need some extra steps to make the output more reliable, consistent and usable.
+
+In this post, we hope to outline all the steps we took and share our search for the best approach and model. We will share the code we used and the considerations we had on the way, to provide you with the tools to start applying LLM’s for your own projects and applications.
+
+### Different types of (open-source) LLM’s
+
+So many different LLM’s exist, with each of them having strengths and weaknesses. Some well known models such as GPT, Claude, Gemeni, LlaMa and Mistral are used for text generation and chats/conversations. For applications such as our project, where a model should understand text and than provide a list based on categories that are taken from the provided description, classification and NLI models such as BART, DeBERTa and RoBERTa can be more suitable. These type of classification models are better in recognizing the meaning and then giving a fixed set of most probable categories as outputs.
+
+### Output: Free text or classification?
+
+When you use a normal text-generating LLM, there are many free parameters, and packing lists outcome can then become very chaotic and unstable over time. This is why a classification model can help in providing users with well structured packing lists with the necessary items for their trip. Of course, this choice highly depends on what you would like as a final output for your application. In case you want a conversation, the text generating models would be of better use. Since we really want to provide the user with a list of items based on categories derived from the trip description, using classification models as the base for the framework seemed to be more suitable for our application.
+
+### Trainability of LLM’s
+
+The existing LLM’s as mentioned in the above introduction can be either used “off-the-shelf” without modification, or you can provide them with extra information regarding your specific application. If you use an text-generating LLM, as a chatbot for your customer service, you can train the model by giving more information about your specific return policy, for instance. In case of the zero-shot models, you may specify categories specific to your application, so that you will always receive the estimates for that set of categories you’re interested in.
+
+### Open-source platforms and models
+
+Many powerful LLM’s are available on platforms such as  
+- [Hugging Face](https://huggingface.co/)  
+- [Replicate](https://replicate.com/)  
+- [ModelScope](https://modelscope.cn/)  
+- [OpenRouter](https://openrouter.ai/)
+
+This makes it possible to use existing models, compare them before using on the platforms and adjust them to your own application without having to train a model from scratch.
+
+For our project we have used the  
+- [Transformers library](https://pypi.org/project/transformers/) in Python to test and combine models, and  
+- [Gradio](https://www.gradio.dev/) to build a simple user interface around it.  
+
+This means we can experiment with input and output in a visual interface, and observe the output of our models directly in an app.
 
 ## Implementation of packing list model
 ### Set up: Anja
