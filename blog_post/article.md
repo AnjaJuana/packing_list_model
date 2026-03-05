@@ -10,7 +10,7 @@ A cool characteristic of LLM’s, is that they can respond in a very logical and
 
 ## The application: Personalized Holiday packing lists
 
-The goal of the project is to develop a framework using LLM’s that automatically generates packing lists based on a textual description of a trip. This description can be really short (“a weekend camping in the mountains”) or much more elaborate (“10 days tour through Iceland in summer with hikes, camping and remote workdays. I will also do strength training, yoga and sleep outside”). The model will for instance try to understand the type, destination and duration of the trip, the season, and potential extra activities or characteristics and will then provice a list of potentially necessary items to pack for each trip.
+The goal of the project is to develop a framework using LLM’s that automatically generates packing lists based on a textual description of a trip. This description can be really short (“a weekend camping in the mountains”) or much more elaborate (“10 days tour through Iceland in summer with hikes, camping and remote workdays. I will also do strength training, yoga and sleep outside”). The model will for instance try to understand the type, destination and duration of the trip, the season, and potential extra activities or characteristics and will then provide a list of potentially necessary items to pack for each trip.
 
 We tested several open source NLI en zero-shot models (such as BART and DeBERTa - more about them later) to see which one performs the best on several different indicators. We have found that the standard models and options are not always directly fittable to any situation, and that when you plan to ‘use an LLM in practice’ for your own application, you might need some extra steps to make the output more reliable, consistent and usable.
 
@@ -38,7 +38,7 @@ Many powerful LLM’s are available on platforms such as
 
 This makes it possible to use existing models, compare them before using on the platforms and adjust them to your own application without having to train a model from scratch.
 
-For our project we have used the  
+For our project we have used models from Hugging Face with the  
 - [Transformers library](https://pypi.org/project/transformers/) in Python to test and combine models, and  
 - [Gradio](https://www.gradio.dev/) to build a simple user interface around it.  
 
@@ -47,14 +47,11 @@ This means we can experiment with input and output in a visual interface, and ob
 ## Implementation of packing list model
 ### Set up: Anja
 
-Hugging Face is a company and platform for the machine learning community to collaborate on models, datasets and applications, especially in the field of natural language processing.
-To be able to use the full functionality offered by Hugging Face (e.g. access to models, spaces, datasets, API access) you can create a free account on their website https://huggingface.co/.
-(There is a new course at data camp, which is free for the remainder of 2025: https://huggingface.co/blog/huggingface/datacamp-ai-courses)
-
+To use the full functionality offered by Hugging Face (e.g. access to models, spaces, datasets, API access) you can create a free account on their website https://huggingface.co/.
 
 To develop our model, we use the Anaconda Navigator, which includes the package and environment manager conda, as well as Jupyter Notebook for writing and running Python code. You can download the Anaconda navigator from their website https://www.anaconda.com/products/navigator. (Python is installed automatically) 
 
-Using the command line, you can create a new environment to work in and install the required packages. The following commands create a new environment called hf_env and activate it:
+After installation you can use the command line to create a new environment to work in and install the required packages. The following commands create a new environment called hf_env and activate it:
 
 ```bash
 conda create --name hf_env
@@ -68,21 +65,20 @@ pip install transformers torch numpy tabulate gradio pandas scikit-learn
 conda install jupyter
 jupyter-notebook
 ```
-Create a new Jupyter Notebook for this project. 
+Create a new Jupyter Notebook for this project and you are ready to start coding. 
 
 
 ### Hugging face API
-Let us first try out some Hugging Face models using their API. The main advantage of using the API is that you do not need to download the models locally and all computations are handled on Hugging Face servers.
+Let's first try out some Hugging Face models using their API. The main advantage of using the API is that you don't need to download the models locally - everything runs on Hugging Face’s servers.
 
-To use their API you first need to create an access token. Go to https://huggingface.co/settings/tokens and click on *+ Create new token*. Select as token type *Read* and give your token a name. 
-Next, save this access token in your project folder within a .env file. Create a plain text file named .env, then add and save the following line inside it:
+To use the API, you'll first need to create an access token. Go to https://huggingface.co/settings/tokens and click *+ Create new token*. Choose *Read* as the token type and give it a name. 
+Next, save this token in your project folder using a .env file. Create a plain text file called .env, then add the following line (replacing YOUR_OWN_ACCESS_TOKEN with your actual access token) and save it:
 
 ```text
 HF_API_TOKEN=YOUR_OWN_ACCESS_TOKEN
-```
-, where you replace YOUR_OWN_ACCESS_TOKEN with your actual access token. 
+``` 
 
-Now it is time to start coding and try out your first zero-shot-classification model. In your Jupyter Notebook, create a code cell and enter the following Python code:
+Now it's time to start coding and try out your first zero-shot-classification model. In your Jupyter Notebook, create a code cell and enter the following Python code:
 
 ```python
 from dotenv import load_dotenv
@@ -106,12 +102,12 @@ def query(model, input_text):
 
 ```
 
-In this code, we first load the necessary libraries and then the .env file. Next, we then define a set of candidate labels for our zero-shot classification model and create a query function which receives a model name and an input text and returns the model's classification. 
+In this code, we first load the required libraries and the .env file. Next, we then define a set of candidate labels for our zero-shot classification model. Finally, we implement a query function which takes a model name and an input text and returns the model's classification. 
 
-Trying the query function with the model "facebook/bart-large-mnli" from Hugging Face and a short input text we get the following result: 
+Trying the query function with the Hugging Face model "facebook/bart-large-mnli" and a short input text we get the following result: 
 
 ```python
-input_text = "I just bought a new laptop, and it works amazing!"
+input_text = "I just started to play tennis, and it's so much fun!"
 output = query("facebook/bart-large-mnli", input_text)
 print(json.dumps(output, indent=4))
 ```
@@ -119,37 +115,38 @@ print(json.dumps(output, indent=4))
 ```json
 [
     {
-        "label": "technology",
-        "score": 0.970917284488678
+        "label": "sports",
+        "score": 0.9877110719680786
     },
     {
         "label": "health",
-        "score": 0.014999152161180973
+        "score": 0.006601463537663221
     },
     {
-        "label": "sports",
-        "score": 0.008272469975054264
+        "label": "technology",
+        "score": 0.004392746835947037
     },
     {
         "label": "politics",
-        "score": 0.005811101291328669
+        "score": 0.0012947289505973458
     }
 ]
 ```
 The scores represent the probabilities of the text belonging to a particular class label.
 
-This approach worked great! However, using the API the functionality is limited. We were limited to 10 candidate labels for our classification, which was not sufficient for our packing list model.
+This approach worked great! However, when using the API we ran into some limitations. 
+in particular, we were limited to 10 candidate labels for classification, which wasn't enough for our packing list model.
 
 
 ### Predefine outputs/classes: Nikky
 
 ### Model implementation: Anja
 
-Now we load the model locally and work with additional functionality. We import the required libraries and load our class labels from a JSON file. The last code block prints out these classes, sorted into several *superclasses*. For each superclass, we will use a dedicated zero-shot classification model and therefore get a list of relevant class labels for out trip.
+Now we load the model locally and work with additional functionality. We import the required libraries and load our class labels from a JSON file. The last code block prints out these labels, grouped into several *superclasses*. For each superclass, we will use a dedicated zero-shot classification model that returns the most likely class label. This gives us a list of relevant labels for our trip, which we later map to specific packing item lists.
 
 ```python
+import json
 import pandas as pd
-import matplotlib.pyplot as plt
 from tabulate import tabulate
 from transformers import pipeline
 
@@ -259,7 +256,7 @@ trip_length_days :
 	 7+ days
 ```
 
-Next, we use the pipeline function to load the model *facebook/bart-large-mnli* from Hugging Face. After that, we pass the trip description, along with the candidate labels for the *activity_type* superclass, to the classifier and print the output as a pandas DataFrame.
+Next, we use the pipeline function to load the model *facebook/bart-large-mnli* from Hugging Face. Then we pass the trip description together with the candidate labels for the *activity_type* superclass, to the classifier and print the results as a pandas DataFrame.
 
 ```python
 model_name = "facebook/bart-large-mnli"
@@ -294,7 +291,7 @@ print(df)
 15               hut trek (winter)  0.002170
 ```
 
-The most likely activity type our model predicted is "beach vacation", which is correct! Now we will do this for every superclass and choose the most likely class label for our trip, except for the *activities* superclass. Because it is possible and likely to engaeg in more than one activity during a trip, we enable the multi_label otion within the classifier function. This means that the text can belong to more than one class. For this, each class label is evaluated independently and a probability of belonging to that class (vs not belonging) is returned. The activities that we select as our best guess are those with a probability of more than 50 percent.
+The model predicts "beach vacation" as most likely, which is correct! We then repeat this process for each superclass and pick the most likely class label for our trip, with one exception: the *activities* superclass. Because a trip can include more than one activity, we enable the multi_label option in the classifier function. This allows the text to be assigned to more than one class. Each label is evaluated independently, and the model returns a probability for whether the text belongs to that class or not. We treat any activity with a probability above 50% as a good match and include it in our final selection.
 
 ```python
 cut_off = 0.5
@@ -339,7 +336,7 @@ print(classes)
 ['going to the beach', 'relaxing', 'hiking']
 ```
 
-We now write a function that automatically performs all predictions for each superclass based on a given trip description and try it out.
+Next, we write a function that automatically runs the predictions for each superclass based on a given trip description and try it out.
 
 ```python
 def pred_trip(model_name, trip_descr, cut_off = 0.5):
@@ -374,7 +371,7 @@ print(result)
 ```
 
 ```text
-           superclass                              pred_class
+Processing 9/9           superclass                              pred_class
 0       activity_type                          beach vacation
 1          activities  [going to the beach, relaxing, hiking]
 2   climate_or_season               warm destination / summer
@@ -386,10 +383,214 @@ print(result)
 8    trip_length_days                                 7+ days
 ```
 
-And with that, we obtain the predicted labels for our trip description.
+And just like that, we get the predicted labels for our trip description. For each label, we’ve put together a matching list of items to pack. Next, we simply connect those trip labels to the packing items by loading a file with packing items and adding some code to our pred_trip function:
+
+```python
+# Load packing item data
+with open("packing_templates_self_supported_offgrid_expanded.json", "r") as file:
+    packing_items = json.load(file)
+
+
+def pred_trip(model_name, trip_descr, cut_off = 0.5):
+    """
+    Classifies trip
+    
+    Parameters:
+    model_name: name of hugging-face model
+    trip_descr: text describing the trip
+    cut_off: cut_off for choosing activities
+
+    Returns:
+    pd Dataframe: with class predictions
+    """
+    
+    classifier = pipeline("zero-shot-classification", model=model_name)
+    df = pd.DataFrame(columns=['superclass', 'pred_class'])
+    for i, key in enumerate(keys_list):
+        print(f"\rProcessing {i + 1}/{len(keys_list)}", end="", flush=True)
+        if key == 'activities':
+            result = classifier(trip_descr, candidate_labels[key], multi_label=True)
+            indices = [i for i, score in enumerate(result['scores']) if score > cut_off]
+            classes = [result['labels'][i] for i in indices]
+        else:
+            result = classifier(trip_descr, candidate_labels[key])
+            classes = result["labels"][0]
+        df.loc[i] = [key, classes]
+    
+    ## Look up and return list of items to pack based on class predictions
+    # make list from dataframe column
+    all_classes = [elem for x in df["pred_class"] for elem in (x if isinstance(x, list) else [x])]
+    # look up packing items for each class/key
+    list_of_list_of_items = [packing_items.get(k, []) for k in all_classes]
+    # combine lists and remove doubble entries
+    flat_unique = []
+    for sublist in list_of_list_of_items:
+        for item in sublist:
+            if item not in flat_unique:
+                flat_unique.append(item)
+    # sort alphabetically
+    sorted_list = sorted(flat_unique)  
+    return df, sorted_list
+
+result = pred_trip(model_name, trip_descr, cut_off = 0.5)
+
+print(result[0])
+for item in result[1]:
+    print("\n", item)
+```
+
+```text
+           superclass                              pred_class
+0       activity_type                          beach vacation
+1          activities  [going to the beach, relaxing, hiking]
+2   climate_or_season               warm destination / summer
+3    style_or_comfort                              minimalist
+4          dress_code                                  casual
+5       accommodation                    huts with half board
+6      transportation                          no own vehicle
+7  special_conditions               off-grid / no electricity
+8    trip_length_days                                 7+ days
+
+ 1 set of clothing for every situation
+
+ USB hub (for multiple devices)
+
+ all‑in‑one soap
+
+ backpack
+
+ backup lighting (e.g. small flashlight)
+
+ beach bag
+
+ beach chair
+
+ beach towel
+
+ blister plasters or tape
+
+ book or e‑reader
+
+ cap or hat
+
+ cash for payments
+
+ comfortable clothing
+
+ compact toothbrush
+
+ cooler
+
+ daypack
+
+ earplugs
+
+ emergency communication (e.g. GPS beacon or satellite messenger)
+
+ extra charger cables
+
+ extra clothing layer
+
+ first aid kit
+
+ flashlight or headlamp
+
+ flip flops
+
+ foldable solar panel (if on longer trips)
+
+ hat or cap
+
+ headlamp + extra batteries
+
+ hiking boots or trail runners
+
+ hiking poles
+
+ hiking socks (anti-blister)
+
+ jeans or comfortable pants
+
+ light pajamas or sleepwear
+
+ light shoes
+
+ light towel
+
+ lightweight clothing
+
+ lightweight towel
+
+ music / headphones
+
+ navigation (map/compass/GPS)
+
+ navigation device with offline maps
+
+ notebook + pen
+
+ number of meals/snacks matched to duration
+
+ packaging to keep electronics dry
+
+ paper map and compass
+
+ power bank (at least 10,000 mAh)
+
+ public transport app or ticket
+
+ rain jacket or poncho
+
+ rechargeable batteries and charger
+
+ reservation confirmation
+
+ seat cushion or beach mat
+
+ sheet liner (often required)
+
+ slippers or indoor shoes for inside
+
+ small backpack
+
+ small toiletry bag
+
+ snacks / energy bars
+
+ snacks for along the way
+
+ sneakers
+
+ socks per day
+
+ solar panel or portable charging system
+
+ sun hat
+
+ sunglasses
+
+ sunscreen
+
+ sunscreen and sunglasses
+
+ sweater or hoodie
+
+ swimwear
+
+ t-shirts
+
+ toiletry bag
+
+ underwear per day
+
+ water bottle
+
+ water bottle(s) or hydration bladder
+```
+We are ready! But let's make it a bit more user friendly in the next step!
 
 ### Gradio App: Anja
-Next, let's use the Gradio library to wrap our classification function in an interactive interface with inputs and outputs. We pass our function pred_trip, along with the input and output formats and some default values, to the gr.Interface function. 
+Gradio makes it easy to wrap machine learning functions into an interactive interface with inputs and outputs. All we need to do is pass our function pred_trip, along with the input and output formats and some default values into the gr.Interface function. 
 
 ```python
 import gradio as gr
@@ -397,12 +598,11 @@ import gradio as gr
 demo = gr.Interface(
     fn=pred_trip,
     inputs=[
-        gr.Textbox(label="Model name", value = "facebook/bart-large-mnli"),
+        gr.Textbox(label="Model name", value = "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli"),
         gr.Textbox(label="Trip description"),
         gr.Number(label="Activity cut-off", value = 0.5),
     ],
-    # outputs="dataframe",
-    outputs=[gr.Dataframe(label="DataFrame")],
+    outputs=[gr.Dataframe(label="Trip classification"), gr.Textbox(label="Items to pack")],
     title="Trip classification",
     description="Enter a text describing your trip",
 )
@@ -416,22 +616,26 @@ if __name__ == "__main__":
 
 ![Demo of my Gradio app](./img/gradio_pred_trip.png)
 
-The app is now ready to take your trip description and return a list of predicted class labels for your trip.
+And that's it. The app is now ready to take your trip description and return a packing list for your trip! 
 
 
 ### Share your model: Anja
 **Hugging Face Spaces**
-A simple way to share your model with others is to use Hugging Face Spaces, where you can create a free Space that can be expanded later. Go to https://huggingface.co/spaces and click on "+ New Space", as SDK choose Gradio, as template Blank, as Space hardware choose "CPU Basic", and click on "Create Space" to create your Space.
-Connected to your space is a remote git repository which is a smooth way to push your model code to the Space. Once the Space is created you will see the url of your Space and some instructions of how to set it up.
+A simple way to share your model with others is to use Hugging Face Spaces, where you can create a free Space that can be expanded later. Head to https://huggingface.co/spaces and click on "+ New Space". Choose 
+* SDK: Gradio
+* Template: Blank
+* Space hardware CPU Basic
+Then click on "Create Space".
+Connected to your space is a remote git repository which makes is easy to push your model code to the Space. Once your Space is created you'll see its URL along with instructions on how to set it up.
 
 ```bash
 # When prompted for a password, use an access token with write permissions.
 # Generate one from your settings: https://huggingface.co/settings/tokens
 git clone https://huggingface.co/spaces/<username>/<space_name>
 ```
-As prompted, go to https://huggingface.co/settings/tokens to generate an access token. Click on *+ Create new token*, set the token type to *Write*. Give your token a name and click on *Create Token*. You will use this token as a password to push to your remote repository. 
+As prompted, go to https://huggingface.co/settings/tokens to generate an access token. Click on *+ Create new token*, set the token type to *Write*. Give your token a name and click on *Create Token*. You'll use this token as a password to push to your remote repository. 
 
-Next, open the command line, navigate to your project folder, initialize git and connect it to the remote repository.
+Next, open the command line, navigate to your project folder, initialize git and connect it to the remote repository:
 
 ```bash
 cd path/to/your/project
@@ -439,7 +643,7 @@ git init
 git remote add origin https://huggingface.co/spaces/<username>/<space-name>
 ```
 
-The Space will automatically run the model code from a file named app.py. In your project folder, create this file (e.g. on mac in command line: touch app.py) and open it. Copy all relevant code for your Gradio app into this file and save it.
+The Space automatically runs whatever model code you put in a file called app.py. In your project folder, create that file (e.g. on mac in command line: touch app.py) and open it. Copy all relevant code for your Gradio app into this file and save it.
 
 ```python
 from transformers import pipeline
@@ -467,7 +671,7 @@ def pred_trip(model_name, trip_descr, cut_off = 0.5):
     classifier = pipeline("zero-shot-classification", model=model_name)
     df = pd.DataFrame(columns=['superclass', 'pred_class'])
     for i, key in enumerate(keys_list):
-        print(f"\rProcessing {i + 1}/{len(keys_list)}", end="", flush=True)
+        # print(f"\rProcessing {i + 1}/{len(keys_list)}", end="", flush=True)
         if key == 'activities':
             result = classifier(trip_descr, candidate_labels[key], multi_label=True)
             indices = [i for i, score in enumerate(result['scores']) if score > cut_off]
@@ -481,11 +685,11 @@ def pred_trip(model_name, trip_descr, cut_off = 0.5):
 demo = gr.Interface(
     fn=pred_trip,
     inputs=[
-        gr.Textbox(label="Model name", value = "facebook/bart-large-mnli"),
+        gr.Textbox(label="Model name", value = "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli"),
         gr.Textbox(label="Trip description"),
         gr.Number(label="Activity cut-off", value = 0.5),
     ],
-    outputs=[gr.Dataframe(label="DataFrame")],
+    outputs=[gr.Dataframe(label="Trip classification"), gr.Textbox(label="Items to pack")],
     title="Trip classification",
     description="Enter a text describing your trip",
 )
@@ -493,6 +697,7 @@ demo = gr.Interface(
 # Launch the Gradio app
 if __name__ == "__main__":
     demo.launch()
+
 ```
 
 Additionally, in your project folder, create a plain text file named requirements.txt.
@@ -523,11 +728,11 @@ https://huggingface.co/spaces/<username>/<space-name>
 
 
 ## Performance assessment: Anja
-To evaluate the performance of different zero-shot classification models, we manually created a small test data set of 10 trip descriptions with corresponding class labels. We compared 12 of the most popular zero-shot classification Models available on Hugging Face. 
+To see how well different zero-shot classification models perform, we put together a small test data set of 10 trip descriptions with corresponding class labels. We then compared 12 of the most popular zero-shot classification Models available on Hugging Face. 
 
-Performance was assessed in terms of accuracy (#correct classifications/#total classifications) for all superclasses, excluding the activities superclass. Since more than one type of activity can be correct for a single trip, we use the percentage of correctly identified activities (#correctly identified/#total correct activities) and the percentage of wrongly predicted activities (#falsly predicted/#total predicted activities) to asses its performance.
+We assessed performance using accuracy (#correct classifications/#total classifications) across all superclasses, excluding the activities superclass. Since a single trip can include multiple activities, we measured the percentage of correctly identified activities (#correctly identified/#total correct activities) and the percentage of wrongly predicted activities (#falsly predicted/#total predicted activities).
 
-We then computed the average performance measures (across the test dataset) for each model and ranked them by accuracy.
+We then calculated the average performance metrics across the test dataset for each model and ranked them based on their accuracy.
 
 ```text
                                                         model  accuracy  true_ident  false_pred
