@@ -428,19 +428,18 @@ def pred_trip(model_name, trip_descr, cut_off = 0.5):
         for item in sublist:
             if item not in flat_unique:
                 flat_unique.append(item)
-    # sort alphabetically
-    sorted_list = sorted(flat_unique)  
+    # sort alphabetically and add newlines
+    sorted_list = "\n".join(sorted(flat_unique))  
     return df, sorted_list
 
 result = pred_trip(model_name, trip_descr, cut_off = 0.5)
 
 print(result[0])
-for item in result[1]:
-    print("\n", item)
+print(result[1])
 ```
 
 ```text
-           superclass                              pred_class
+            superclass                              pred_class
 0       activity_type                          beach vacation
 1          activities  [going to the beach, relaxing, hiking]
 2   climate_or_season               warm destination / summer
@@ -450,142 +449,74 @@ for item in result[1]:
 6      transportation                          no own vehicle
 7  special_conditions               off-grid / no electricity
 8    trip_length_days                                 7+ days
-
- 1 set of clothing for every situation
-
- USB hub (for multiple devices)
-
- all‑in‑one soap
-
- backpack
-
- backup lighting (e.g. small flashlight)
-
- beach bag
-
- beach chair
-
- beach towel
-
- blister plasters or tape
-
- book or e‑reader
-
- cap or hat
-
- cash for payments
-
- comfortable clothing
-
- compact toothbrush
-
- cooler
-
- daypack
-
- earplugs
-
- emergency communication (e.g. GPS beacon or satellite messenger)
-
- extra charger cables
-
- extra clothing layer
-
- first aid kit
-
- flashlight or headlamp
-
- flip flops
-
- foldable solar panel (if on longer trips)
-
- hat or cap
-
- headlamp + extra batteries
-
- hiking boots or trail runners
-
- hiking poles
-
- hiking socks (anti-blister)
-
- jeans or comfortable pants
-
- light pajamas or sleepwear
-
- light shoes
-
- light towel
-
- lightweight clothing
-
- lightweight towel
-
- music / headphones
-
- navigation (map/compass/GPS)
-
- navigation device with offline maps
-
- notebook + pen
-
- number of meals/snacks matched to duration
-
- packaging to keep electronics dry
-
- paper map and compass
-
- power bank (at least 10,000 mAh)
-
- public transport app or ticket
-
- rain jacket or poncho
-
- rechargeable batteries and charger
-
- reservation confirmation
-
- seat cushion or beach mat
-
- sheet liner (often required)
-
- slippers or indoor shoes for inside
-
- small backpack
-
- small toiletry bag
-
- snacks / energy bars
-
- snacks for along the way
-
- sneakers
-
- socks per day
-
- solar panel or portable charging system
-
- sun hat
-
- sunglasses
-
- sunscreen
-
- sunscreen and sunglasses
-
- sweater or hoodie
-
- swimwear
-
- t-shirts
-
- toiletry bag
-
- underwear per day
-
- water bottle
-
- water bottle(s) or hydration bladder
+1 set of clothing for every situation
+USB hub (for multiple devices)
+all‑in‑one soap
+backpack
+backup lighting (e.g. small flashlight)
+beach bag
+beach chair
+beach towel
+blister plasters or tape
+book or e‑reader
+cap or hat
+cash for payments
+comfortable clothing
+compact toothbrush
+cooler
+daypack
+earplugs
+emergency communication (e.g. GPS beacon or satellite messenger)
+extra charger cables
+extra clothing layer
+first aid kit
+flashlight or headlamp
+flip flops
+foldable solar panel (if on longer trips)
+hat or cap
+headlamp + extra batteries
+hiking boots or trail runners
+hiking poles
+hiking socks (anti-blister)
+jeans or comfortable pants
+light pajamas or sleepwear
+light shoes
+light towel
+lightweight clothing
+lightweight towel
+music / headphones
+navigation (map/compass/GPS)
+navigation device with offline maps
+notebook + pen
+number of meals/snacks matched to duration
+packaging to keep electronics dry
+paper map and compass
+power bank (at least 10,000 mAh)
+public transport app or ticket
+rain jacket or poncho
+rechargeable batteries and charger
+reservation confirmation
+seat cushion or beach mat
+sheet liner (often required)
+slippers or indoor shoes for inside
+small backpack
+small toiletry bag
+snacks / energy bars
+snacks for along the way
+sneakers
+socks per day
+solar panel or portable charging system
+sun hat
+sunglasses
+sunscreen
+sunscreen and sunglasses
+sweater or hoodie
+swimwear
+t-shirts
+toiletry bag
+underwear per day
+water bottle
+water bottle(s) or hydration bladder
 ```
 We are ready! But let's make it a bit more user friendly in the next step!
 
@@ -635,25 +566,31 @@ git clone https://huggingface.co/spaces/<username>/<space_name>
 ```
 As prompted, go to https://huggingface.co/settings/tokens to generate an access token. Click on *+ Create new token*, set the token type to *Write*. Give your token a name and click on *Create Token*. You'll use this token as a password to push to your remote repository. 
 
-Next, open the command line, navigate to your project folder, initialize git and connect it to the remote repository:
+Next, open the command line, navigate to where you want your project folder and clone the remote repository:
 
 ```bash
-cd path/to/your/project
-git init
-git remote add origin https://huggingface.co/spaces/<username>/<space-name>
+cd path/to/where/you/want/the-folder
+git clone https://huggingface.co/spaces/<username>/<space-name>
 ```
+Put your project files into the newly created folder named <space-name>.
 
 The Space automatically runs whatever model code you put in a file called app.py. In your project folder, create that file (e.g. on mac in command line: touch app.py) and open it. Copy all relevant code for your Gradio app into this file and save it.
 
 ```python
-from transformers import pipeline
 import json
 import pandas as pd
+from transformers import pipeline
 import gradio as gr
 
+# get candidate labels
 with open("packing_label_structure.json", "r") as file:
     candidate_labels = json.load(file)
 keys_list = list(candidate_labels.keys())
+
+# Load packing item data
+with open("packing_templates_self_supported_offgrid_expanded.json", "r") as file:
+    packing_items = json.load(file)
+
 
 def pred_trip(model_name, trip_descr, cut_off = 0.5):
     """
@@ -671,7 +608,7 @@ def pred_trip(model_name, trip_descr, cut_off = 0.5):
     classifier = pipeline("zero-shot-classification", model=model_name)
     df = pd.DataFrame(columns=['superclass', 'pred_class'])
     for i, key in enumerate(keys_list):
-        # print(f"\rProcessing {i + 1}/{len(keys_list)}", end="", flush=True)
+        print(f"\rProcessing {i + 1}/{len(keys_list)}", end="", flush=True)
         if key == 'activities':
             result = classifier(trip_descr, candidate_labels[key], multi_label=True)
             indices = [i for i, score in enumerate(result['scores']) if score > cut_off]
@@ -680,7 +617,22 @@ def pred_trip(model_name, trip_descr, cut_off = 0.5):
             result = classifier(trip_descr, candidate_labels[key])
             classes = result["labels"][0]
         df.loc[i] = [key, classes]
-    return df
+    
+    ## Look up and return list of items to pack based on class predictions
+    # make list from dataframe column
+    all_classes = [elem for x in df["pred_class"] for elem in (x if isinstance(x, list) else [x])]
+    # look up packing items for each class/key
+    list_of_list_of_items = [packing_items.get(k, []) for k in all_classes]
+    # combine lists and remove doubble entries
+    flat_unique = []
+    for sublist in list_of_list_of_items:
+        for item in sublist:
+            if item not in flat_unique:
+                flat_unique.append(item)
+    # sort alphabetically and add newlines
+    sorted_list = "\n".join(sorted(flat_unique))  
+    return df, sorted_list
+
 
 demo = gr.Interface(
     fn=pred_trip,
@@ -712,12 +664,13 @@ pandas
 gradio
 ```
 
-After that, add, commit, and push your changes to the remote repository.
+After that, navigate to your project folder, add, commit, and push your changes to the remote repository.
 
 ```bash
+cd <space-name>
 git add .
-git commit -m "Initial commit"
-git push origin main
+git commit -m "initial commit"
+git push origin master
 ```
 
 Once the push is complete, go to the URL of your Space and try it out!
